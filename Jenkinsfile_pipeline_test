@@ -20,7 +20,7 @@ properties([
 library "Infrastructure@${params.LIB_VERSION}"
 
 def type = "java"
-def product = "crumble"
+def product = "apple"
 def app = "recipe-backend"
 
 def apiTestSecrets = [ 'crumblesi-${env}' :
