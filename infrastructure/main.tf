@@ -78,6 +78,8 @@ module "recipe-database" {
   storage_mb         = "51200"
   common_tags        = var.common_tags
   subscription       = var.subscription
+  key_vault_rg       = "genesis-rg"
+  key_vault_name     = "dtssharedservices${var.env}kv"
 }
 
 # region API (gateway)
