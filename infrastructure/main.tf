@@ -82,23 +82,4 @@ module "recipe-database" {
   key_vault_name     = "dtssharedservices${var.env}kv"
 }
 
-# region API (gateway)
-
-module "plum_product" {
-  source = "git@github.com:hmcts/cnp-module-api-mgmt-product?ref=master"
-
-  api_mgmt_name = "core-api-mgmt-${var.env}"
-  api_mgmt_rg   = "core-infra-${var.env}"
-
-  name = "plum-recipes"
-}
-
-module "policy" {
-  source                 = "git@github.com:hmcts/cnp-module-api-mgmt-api-policy?ref=master"
-  api_mgmt_name          = "core-api-mgmt-${var.env}"
-  api_mgmt_rg            = "core-infra-${var.env}"
-  api_name               = module.api.name
-  api_policy_xml_content = local.api_policy
-}
-# endregion
 
