@@ -23,14 +23,6 @@ def type = "java"
 def product = "apple"
 def app = "recipe-backend"
 
-def apiTestSecrets = [ 'crumblesi-${env}' :
-  [
-    secret('test-client-key-store', 'TEST_CLIENT_KEY_STORE'),
-    secret('test-client-key-store-password', 'TEST_CLIENT_KEY_STORE_PASSWORD'),
-    secret('test-client-subscription-key', 'TEST_CLIENT_SUBSCRIPTION_KEY')
-  ]
-]
-
 static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
   [ $class: 'AzureKeyVaultSecret',
     secretType: 'Secret',
