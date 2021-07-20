@@ -1,9 +1,13 @@
 java:
   applicationPort: 4550
+  aadIdentityName: cnp
+  readinessPath: '/health/readiness'
   # Don't modify below here
-  image: 'hmctssandbox.azurecr.io/hmcts/crumble-recipe-backend:latest'
+  image: 'hmctspublic.azurecr.io/toffee/recipe-backend:latest'
+  environment:
+    POSTGRES_SSL_MODE: require
   keyVaults:
-    "crumblesi":
+    "toffeesi":
       secrets:
         - name: recipe-backend-POSTGRES-DATABASE
           alias: POSTGRES_DATABASE
