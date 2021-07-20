@@ -6,7 +6,7 @@ spring:
   application:
     name: HMCTS Rhubarb Recipes Service
   config:
-    import: "optional:configtree:/mnt/secrets/plumsi/,optional:configtree:/mnt/secrets/crumblesi/,optional:configtree:/mnt/secrets/toffee/"
+    import: "optional:configtree:/mnt/secrets/toffeesi/,optional:configtree:/mnt/secrets/applesi/"
   datasource:
     url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DATABASE:plum}?sslmode=${POSTGRES_SSL_MODE:require}
     username: ${POSTGRES_USER}
