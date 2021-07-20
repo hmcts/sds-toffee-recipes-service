@@ -3,11 +3,11 @@ java:
   aadIdentityName: cnp
   readinessPath: '/health/readiness'
   # Don't modify below here
-  image: 'hmctspublic.azurecr.io/plum/recipe-backend:latest'
+  image: 'hmctspublic.azurecr.io/toffee/recipe-backend:latest'
   environment:
     POSTGRES_SSL_MODE: require
   keyVaults:
-    "plumsi":
+    "toffeesi":
       secrets:
         - name: recipe-backend-POSTGRES-DATABASE
           alias: POSTGRES_DATABASE
