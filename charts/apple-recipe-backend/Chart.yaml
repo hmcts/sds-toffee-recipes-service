@@ -1,8 +1,8 @@
 name: apple-recipe-backend
 apiVersion: v2
-home: https://github.com/hmcts/cnp-plum-recipes-service
+home: https://github.com/hmcts/sds-toffee-recipes-service
 version: 0.2.2
-description: This is for Jenkins pipeline tests of plum /apple app.
+description: This is for Jenkins pipeline tests of toffee /apple app.
 maintainers:
   - name: HMCTS Platform Engineering Team
 dependencies:
