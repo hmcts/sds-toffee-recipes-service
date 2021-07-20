@@ -1,9 +1,9 @@
 java:
   applicationPort: 4550
   # Don't modify below here
-  image: 'hmctssandbox.azurecr.io/hmcts/crumble-recipe-backend:latest'
+  image: 'hmctssandbox.azurecr.io/hmcts/apple-recipe-backend:latest'
   keyVaults:
-    "crumblesi":
+    "applesi":
       secrets:
         - name: recipe-backend-POSTGRES-DATABASE
           alias: POSTGRES_DATABASE

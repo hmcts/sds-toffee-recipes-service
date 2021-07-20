@@ -1,11 +1,10 @@
-name: crumble-recipe-backend
+name: apple-recipe-backend
 apiVersion: v2
 home: https://github.com/hmcts/cnp-plum-recipes-service
 version: 0.2.2
-description: This is for Jenkins pipeline tests of plum /crumble app.
+description: This is for Jenkins pipeline tests of plum /apple app.
 maintainers:
-  - name: HMCTS CNP Team
-    email: cnpteam@hmcts.net
+  - name: HMCTS Platform Engineering Team
 dependencies:
   - name: java
     version: 3.4.6
