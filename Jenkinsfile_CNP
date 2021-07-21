@@ -3,10 +3,10 @@
 @Library("Infrastructure") _
 
 def type = "java"
-def product = "plum"
+def product = "toffee"
 def component = "recipe-backend"
 
-def apiTestSecrets = [ 'plumsi-${env}' :
+def apiTestSecrets = [ 'toffeesi-${env}' :
   [
     secret('test-client-key-store', 'TEST_CLIENT_KEY_STORE'),
     secret('test-client-key-store-password', 'TEST_CLIENT_KEY_STORE_PASSWORD'),
