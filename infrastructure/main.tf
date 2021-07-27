@@ -71,7 +71,6 @@ module "recipe-database" {
   postgresql_user    = "rhubarbadmin"
   database_name      = "rhubarb-v11"
   postgresql_version = "11"
-
   subnet_id          = data.azurerm_subnet.postgres.id
   sku_name           = "GP_Gen5_2"
   sku_tier           = "GeneralPurpose"
@@ -80,6 +79,7 @@ module "recipe-database" {
   subscription       = var.subscription
   key_vault_rg       = "genesis-rg"
   key_vault_name     = "dtssharedservices${var.env}kv"
+  business_area      = "SDS"
 }
 
 
