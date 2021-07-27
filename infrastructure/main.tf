@@ -80,7 +80,7 @@ module "recipe-database" {
   subscription       = var.subscription
   key_vault_rg       = "genesis-rg"
   key_vault_name     = "dtssharedservices${var.env}kv"
-  business_unit      = "SDS"
+  business_area      = "SDS"
 }
 
 
