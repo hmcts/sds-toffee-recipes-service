@@ -49,6 +49,7 @@ def springfoxSwagger = '2.9.2'
 def javaLoggingVersion = '5.1.7'
 
 repositories {
+  gradlePluginPortal()
   jcenter()
   mavenCentral()
   maven {
