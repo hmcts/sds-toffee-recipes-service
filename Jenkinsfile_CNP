@@ -1,6 +1,6 @@
 #!groovy
 
-@Library("Infrastructure") _
+@Library("Infrastructure@DTSPO-2880/remove-artifactory") _
 
 def type = "java"
 def product = "toffee"
