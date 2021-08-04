@@ -20,9 +20,6 @@ withPipeline(type, product, component) {
   enableAksStagingDeployment()
   disableLegacyDeployment()
   enableApiGatewayTest()
-  onNonPR() {
-    loadVaultSecrets(apiTestSecrets)
-  }
   // before('buildinfra:prod') {
   //   currentBuild.description = "Success!"
   //   error 'Plun wont be built on prod environment yet.'
