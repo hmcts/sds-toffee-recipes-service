@@ -3,4 +3,4 @@ java:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
   environment:
-    POSTGRES_SSL_MODE: require
+    POSTGRES_SSL_MODE: disable
