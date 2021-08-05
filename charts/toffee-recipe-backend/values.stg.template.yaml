@@ -2,5 +2,12 @@ java:
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
+  postgresql:
+    enabled: true
+  disableKeyVaults: true
   environment:
-    POSTGRES_SSL_MODE: require
+    POSTGRES_SSL_MODE: disable
+    POSTGRES_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
+    POSTGRES_DATABASE: "{{ .Values.postgresql.postgresqlDatabase }}"
+    POSTGRES_USER: "{{ .Values.postgresql.postgresqlUsername }}"
+    POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
