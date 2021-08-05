@@ -3,7 +3,7 @@ java:
   aadIdentityName: cnp
   readinessPath: '/health/readiness'
   # Don't modify below here
-  image: 'hmctspublic.azurecr.io/toffee/recipe-backend:latest'
+  image: 'sdshmctspublic.azurecr.io/toffee/recipe-backend:latest'
   environment:
     POSTGRES_SSL_MODE: require
   keyVaults:
