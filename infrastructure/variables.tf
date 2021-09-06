@@ -1,5 +1,5 @@
 variable "product" {
-  default = "plum"
+  default = "toffee"
 }
 
 variable "component" {}
@@ -30,10 +30,6 @@ variable "deployment_namespace" {
   default = ""
 }
 
-variable "common_tags" {
-  type = map(string)
-}
-
 # thumbprint of the SSL certificate for API gateway tests
 variable api_gateway_test_certificate_thumbprint {
   # keeping this empty by default, so that no thumbprint will match
@@ -47,4 +43,7 @@ variable "autoheal" {
 
 variable "private_dns_subscription_id" {
   default = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
+}
+variable "builtFrom" {
+  default = "sds-toffee-recipes-service"
 }
