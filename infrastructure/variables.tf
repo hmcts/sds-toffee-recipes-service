@@ -1,7 +1,9 @@
 variable "product" {
-  default = "plum"
+  default = "toffee"
 }
-
+variable "builtFrom" {
+  default = "sds-toffee-recipes-service"
+}
 variable "component" {}
 
 variable "location" {
@@ -28,10 +30,6 @@ variable "capacity" {
 
 variable "deployment_namespace" {
   default = ""
-}
-
-variable "common_tags" {
-  type = map(string)
 }
 
 # thumbprint of the SSL certificate for API gateway tests
