@@ -1,9 +1,7 @@
 variable "product" {
   default = "toffee"
 }
-variable "builtFrom" {
-  default = "sds-toffee-recipes-service"
-}
+
 variable "component" {}
 
 variable "location" {
@@ -45,4 +43,7 @@ variable "autoheal" {
 
 variable "private_dns_subscription_id" {
   default = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
+}
+variable "common_tags" {
+  type = map(string)
 }

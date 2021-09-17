@@ -75,7 +75,7 @@ module "recipe-database" {
   sku_name           = "GP_Gen5_2"
   sku_tier           = "GeneralPurpose"
   storage_mb         = "51200"
-  common_tags        = module.tags.common_tags
+  common_tags        = var.common_tags
   subscription       = var.subscription
   key_vault_rg       = "genesis-rg"
   key_vault_name     = "dtssharedservices${var.env}kv"
@@ -83,9 +83,3 @@ module "recipe-database" {
 }
 
 
-module "tags" {
-  source      = "git::https://github.com/hmcts/terraform-module-common-tags.git?ref=master"
-  environment = lower(var.env)
-  product     = var.product
-  builtFrom   = var.builtFrom
-}
