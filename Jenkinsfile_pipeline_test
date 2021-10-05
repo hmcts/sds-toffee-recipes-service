@@ -17,9 +17,7 @@ properties([
   ])
 ])
 
-//library "Infrastructure@${params.LIB_VERSION}"
-//library "Infrastructure@DTSPO-2880/remove-artifactory"
-library "Infrastructure@DTSPO-4613/artifactory-error"
+library "Infrastructure@${params.LIB_VERSION}"
 
 def type = "java"
 def product = "apple"
