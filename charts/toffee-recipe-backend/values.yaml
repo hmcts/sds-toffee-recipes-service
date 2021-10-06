@@ -1,6 +1,6 @@
 java:
   applicationPort: 4550
-  aadIdentityName: cnp
+  aadIdentityName: toffee
   readinessPath: '/health/readiness'
   # Don't modify below here
   image: 'sdshmctspublic.azurecr.io/toffee/recipe-backend:latest'
