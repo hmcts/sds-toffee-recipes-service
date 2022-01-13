@@ -9,19 +9,19 @@ services:
     mem_limit: 1024M
     environment:
       POSTGRES_HOST: postgres
-      POSTGRES_DATABASE: rhubarbdb
-      POSTGRES_USER: rhubarbuser
-      POSTGRES_PASSWORD: rhubarbpassword
+      POSTGRES_DATABASE: toffee
+      POSTGRES_USER: toffee
+      POSTGRES_PASSWORD: toffee
       POSTGRES_SSL_MODE: disable
       AZURE_APPLICATIONINSIGHTS_INSTRUMENTATIONKEY:
       JAVA_OPTS:
     ports:
       - 9080:4550
   postgres:
-   image: postgres:10-alpine
+   image: postgres:11-alpine
    environment:
-     POSTGRES_USER: rhubarbuser
-     POSTGRES_PASSWORD: rhubarbpassword
-     POSTGRES_DB: rhubarbdb
+     POSTGRES_USER: toffee
+     POSTGRES_PASSWORD: toffee
+     POSTGRES_DB: toffee
    ports:
      - 5460:5432
