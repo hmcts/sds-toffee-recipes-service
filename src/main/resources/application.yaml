@@ -28,7 +28,6 @@ spring:
 
 springdoc:
   packagesToScan: uk.gov.hmcts.reform.rhubarb.recipes.endpoint
-  pathsToMatch: '/**'
 
 management:
   endpoint:
