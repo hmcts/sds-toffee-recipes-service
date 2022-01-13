@@ -67,13 +67,6 @@ ext {
   loggingVersion = "5.1.9"
 }
 
-configurations.all {
-  resolutionStrategy {
-    eachDependency { DependencyResolveDetails details ->
-    }
-  }
-}
-
 dependencies {
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
@@ -102,7 +95,7 @@ dependencies {
 mainClassName = 'uk.gov.hmcts.reform.rhubarb.recipes.Application'
 
 bootJar {
-  archiveFileName = 'moj-rhubarb-recipes-service.jar'
+  archiveFileName = 'sds-toffee-recipes-service.jar'
 
   manifest {
     attributes('Implementation-Version': project.version.toString())
