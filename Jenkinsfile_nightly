@@ -11,6 +11,4 @@ def type = "java"
 def product = "plum"
 def component = "recipe-backend"
 
-withNightlyPipeline(type, product, component) {
-  enableSlackNotifications('#platops-build-notices')
-}
+withNightlyPipeline(type, product, component) {}
