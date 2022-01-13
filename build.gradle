@@ -20,7 +20,11 @@ pmd {
   ruleSetFiles = files("config/pmd/ruleset.xml")
 }
 
-sourceCompatibility = '11'
+java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(17)
+  }
+}
 
 checkstyle {
   toolVersion = '8.29'
