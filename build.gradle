@@ -5,7 +5,7 @@ plugins {
   id 'jacoco'
   id 'io.spring.dependency-management' version '1.0.11.RELEASE'
   id 'org.flywaydb.flyway' version '8.4.1'
-  id 'org.springframework.boot' version '2.5.8'
+  id 'org.springframework.boot' version '2.6.2'
   id 'org.owasp.dependencycheck' version '6.5.3'
   id 'com.github.ben-manes.versions' version '0.41.0'
   id 'org.sonarqube' version '3.3'
@@ -64,7 +64,6 @@ dependencyUpdates {
 ext["rest-assured.version"] = '4.4.0'
 
 ext {
-  springfoxSwaggerVersion = '3.0.0'
   loggingVersion = "5.1.9"
 }
 
@@ -87,8 +86,7 @@ dependencies {
 
   implementation group: 'com.github.hmcts.java-logging', name: 'logging', version: loggingVersion
   implementation group: 'com.github.hmcts.java-logging', name: 'logging-appinsights', version: loggingVersion
-  implementation group: 'io.springfox', name: 'springfox-swagger2', version: springfoxSwaggerVersion
-  implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: springfoxSwaggerVersion
+  implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.4'
 
   compileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVersion
   annotationProcessor group: 'org.projectlombok', name: 'lombok', version: lombokVersion

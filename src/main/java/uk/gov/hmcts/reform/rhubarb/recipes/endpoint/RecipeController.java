@@ -1,15 +1,14 @@
 package uk.gov.hmcts.reform.rhubarb.recipes.endpoint;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import uk.gov.hmcts.reform.rhubarb.recipes.data.RecipeStore;
-import uk.gov.hmcts.reform.rhubarb.recipes.domain.ErrorResult;
 import uk.gov.hmcts.reform.rhubarb.recipes.domain.Recipe;
 import uk.gov.hmcts.reform.rhubarb.recipes.domain.RecipeList;
 import uk.gov.hmcts.reform.rhubarb.recipes.exception.NoRecipeFoundException;
@@ -30,10 +29,10 @@ public class RecipeController {
     }
 
     @GetMapping(path = "/{id}")
-    @ApiOperation("Find recipe by ID")
+    @Operation(summary = "Find recipe by ID")
     @ApiResponses({
-        @ApiResponse(code = 200, message = "Success"),
-        @ApiResponse(code = 404, message = "Not found", response = ErrorResult.class),
+        @ApiResponse(responseCode = "200", description = "Success"),
+        @ApiResponse(responseCode = "404", description = "Not found"),
     })
     public Recipe read(
         @PathVariable String id
@@ -45,9 +44,9 @@ public class RecipeController {
     }
 
     @GetMapping
-    @ApiOperation(value = "Find all your drafts", notes = "Returns an empty array when no drafts were found")
+    @Operation(summary = "Find all your drafts", description = "Returns an empty array when no drafts were found")
     @ApiResponses({
-        @ApiResponse(code = 200, message = "Success"),
+        @ApiResponse(responseCode = "200", description = "Success"),
     })
     public RecipeList readAll() {
 

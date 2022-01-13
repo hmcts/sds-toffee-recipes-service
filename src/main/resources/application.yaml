@@ -26,6 +26,10 @@ spring:
     testOnBorrow: true
     validationQuery: SELECT 1
 
+springdoc:
+  packagesToScan: uk.gov.hmcts.reform.rhubarb.recipes.endpoint
+  pathsToMatch: '/**'
+
 management:
   endpoint:
     health:
