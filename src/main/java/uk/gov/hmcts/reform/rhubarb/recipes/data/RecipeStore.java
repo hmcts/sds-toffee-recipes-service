@@ -23,7 +23,11 @@ public class RecipeStore {
         try {
             Recipe recipe =
                 jdbcTemplate.queryForObject(
-                    "SELECT * FROM recipe WHERE id = :id",
+                    """
+                    SELECT *
+                    FROM recipe
+                    WHERE id = :id
+                    """,
                     new MapSqlParameterSource("id", recipeId),
                     new RecipeMapper()
                 );
@@ -35,7 +39,10 @@ public class RecipeStore {
 
     public List<Recipe> readAll() {
         return jdbcTemplate.query(
-            "SELECT * FROM recipe",
+            """
+              SELECT *
+              FROM recipe
+              """,
             new RecipeMapper()
         );
     }
