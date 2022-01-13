@@ -8,7 +8,7 @@ spring:
   config:
     import: "optional:configtree:/mnt/secrets/toffeesi/,optional:configtree:/mnt/secrets/applesi/"
   datasource:
-    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5460}/${POSTGRES_DATABASE:toffee}?sslmode=${POSTGRES_SSL_MODE:require}
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DATABASE:toffee}?sslmode=${POSTGRES_SSL_MODE:require}
     username: ${POSTGRES_USER}
     password: ${POSTGRES_PASSWORD:}
     properties:
