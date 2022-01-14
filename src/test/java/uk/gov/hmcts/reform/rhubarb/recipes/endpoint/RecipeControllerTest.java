@@ -36,32 +36,33 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class RecipeControllerTest {
 
     @Container
-    public static final PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer("postgres:11-bullseye")
+    public static final PostgreSQLContainer POSTGRES_CONTAINER = new PostgreSQLContainer("postgres:11-bullseye")
         .withDatabaseName("toffee")
         .withUsername("toffee")
         .withPassword("toffee");
+
+    @Autowired
+    @SuppressWarnings("PMD.BeanMembersShouldSerialize")
+    private MockMvc mvc;
+
+    @Autowired
+    @SuppressWarnings("PMD.BeanMembersShouldSerialize")
+    private ObjectMapper objectMapper;
 
     static class Initializer
         implements ApplicationContextInitializer<ConfigurableApplicationContext> {
         public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
             TestPropertyValues.of(
-                "spring.datasource.url=" + postgreSQLContainer.getJdbcUrl(),
-                "spring.datasource.username=" + postgreSQLContainer.getUsername(),
-                "spring.datasource.password=" + postgreSQLContainer.getPassword()
+                "spring.datasource.url=" + POSTGRES_CONTAINER.getJdbcUrl(),
+                "spring.datasource.username=" + POSTGRES_CONTAINER.getUsername(),
+                "spring.datasource.password=" + POSTGRES_CONTAINER.getPassword()
             ).applyTo(configurableApplicationContext.getEnvironment());
         }
     }
 
-    @Autowired
-    private MockMvc mvc;
-
-    @Autowired
-    ObjectMapper objectMapper;
-
     @BeforeEach
     void before() {
-        JdbcDatabaseDelegate jdbcDatabaseDelegate = new JdbcDatabaseDelegate(postgreSQLContainer, "");
-        try {
+        try (JdbcDatabaseDelegate jdbcDatabaseDelegate = new JdbcDatabaseDelegate(POSTGRES_CONTAINER, "")) {
             // script can only be run once
             // schema doesn't generate an ID automatically
             // shortcut to not fail when run more than one
@@ -85,8 +86,8 @@ class RecipeControllerTest {
         RecipeList recipeList = objectMapper.readValue(result, RecipeList.class);
 
         List<Recipe> recipes = recipeList.getRecipes();
-        assertEquals(1, recipes.size());
-        assertEquals("Toffee", recipes.get(0).getName());
+        assertEquals(1, recipes.size(), "correct number of recipes");
+        assertEquals("Toffee", recipes.get(0).getName(), "title is as expected");
     }
 
     @Test
@@ -102,6 +103,6 @@ class RecipeControllerTest {
 
         Recipe recipe = objectMapper.readValue(result, Recipe.class);
 
-        assertEquals("Toffee", recipe.getName());
+        assertEquals("Toffee", recipe.getName(), "title is as expected");
     }
 }
