@@ -21,10 +21,11 @@ public class RecipeStore {
 
     public Optional<Recipe> read(String recipeId) {
         try {
-            Recipe recipe =
-                jdbcTemplate.queryForObject(
-                    "SELECT * FROM recipe WHERE id = :id",
-                    new MapSqlParameterSource("id", recipeId),
+            Recipe recipe = jdbcTemplate.queryForObject("""
+                    SELECT *
+                    FROM recipe
+                    WHERE id = :id
+                    """, new MapSqlParameterSource("id", recipeId),
                     new RecipeMapper()
                 );
             return Optional.of(recipe);
@@ -34,9 +35,10 @@ public class RecipeStore {
     }
 
     public List<Recipe> readAll() {
-        return jdbcTemplate.query(
-            "SELECT * FROM recipe",
-            new RecipeMapper()
+        return jdbcTemplate.query("""
+            SELECT *
+            FROM recipe
+            """, new RecipeMapper()
         );
     }
 
