@@ -49,6 +49,8 @@ class RecipeControllerTest {
     @SuppressWarnings("PMD.BeanMembersShouldSerialize")
     private ObjectMapper objectMapper;
 
+    private static boolean initComplete;
+
     static class Initializer
         implements ApplicationContextInitializer<ConfigurableApplicationContext> {
         public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
@@ -62,13 +64,11 @@ class RecipeControllerTest {
 
     @BeforeEach
     void before() {
-        try (JdbcDatabaseDelegate jdbcDatabaseDelegate = new JdbcDatabaseDelegate(POSTGRES_CONTAINER, "")) {
-            // script can only be run once
-            // schema doesn't generate an ID automatically
-            // shortcut to not fail when run more than one
-            // BeforeAll runs before schema has been setup
-            ScriptUtils.runInitScript(jdbcDatabaseDelegate, "init.sql");
-        } catch (ScriptUtils.UncategorizedScriptException ignored) {
+        if (!initComplete) {
+            try (JdbcDatabaseDelegate jdbcDatabaseDelegate = new JdbcDatabaseDelegate(POSTGRES_CONTAINER, "")) {
+                ScriptUtils.runInitScript(jdbcDatabaseDelegate, "init.sql");
+                initComplete = true;
+            }
         }
     }
 
@@ -87,7 +87,7 @@ class RecipeControllerTest {
 
         List<Recipe> recipes = recipeList.getRecipes();
         assertEquals(1, recipes.size(), "correct number of recipes");
-        assertEquals("Toffee", recipes.get(0).getName(), "title is as expected");
+        assertEquals("Toffee", recipes.get(0).name(), "title is as expected");
     }
 
     @Test
@@ -103,6 +103,7 @@ class RecipeControllerTest {
 
         Recipe recipe = objectMapper.readValue(result, Recipe.class);
 
-        assertEquals("Toffee", recipe.getName(), "title is as expected");
+        assertEquals("Toffee", recipe.name(), "title is as expected");
+        assertEquals("200g sugar", recipe.ingredients(), "ingredients are as expected");
     }
 }
