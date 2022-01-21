@@ -6,6 +6,7 @@ java:
   image: 'sdshmctspublic.azurecr.io/toffee/recipe-backend:latest'
   environment:
     POSTGRES_SSL_MODE: require
+    APPLICATIONINSIGHTS_CONFIGURATION_FILE: /mnt/secrets/toffeesi/app-insights-config
   keyVaults:
     "toffeesi":
       secrets:
@@ -17,3 +18,5 @@ java:
           alias: POSTGRES_USER
         - name: recipe-backend-POSTGRES-PASS
           alias: POSTGRES_PASSWORD
+        - name: recipe-backend-app-insights-config
+          alias: app-insights-config
