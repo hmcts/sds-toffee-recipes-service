@@ -136,8 +136,8 @@ sourceSets {
 }
 
 configurations {
-  functionalCompile.extendsFrom testImplementation
-  functionalRuntime.extendsFrom testRuntime
+  functionalImplementation.extendsFrom testImplementation
+  functionalRuntimeOnly.extendsFrom testRuntimeOnly
 }
 
 task highLevelDataSetup {
@@ -148,25 +148,22 @@ task smoke(type: Test, description: 'Runs the smoke tests.', group: 'Verificatio
   testClassesDirs = sourceSets.functional.output.classesDirs
   classpath = sourceSets.functional.runtimeClasspath
 
-  useJUnit {
-    includeCategories 'uk.gov.hmcts.reform.rhubarb.functional.SmokeTest'
+  useJUnitPlatform {
+    includeTags "SmokeTest"
   }
 }
 
 task functional(type: Test, description: 'Runs the functional tests.', group: 'Verification') {
   testClassesDirs = sourceSets.functional.output.classesDirs
   classpath = sourceSets.functional.runtimeClasspath
+
+  useJUnitPlatform()
 }
 
 test {
   useJUnitPlatform()
 }
 
-tasks.withType(Test) {
-  useJUnitPlatform()
-}
-
 wrapper {
   distributionType = Wrapper.DistributionType.ALL
 }
-
