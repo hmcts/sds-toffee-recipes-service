@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import static io.restassured.RestAssured.get;
 
-public class RecipesTest {
+class RecipesTest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RecipesTest.class);
 
@@ -26,7 +26,7 @@ public class RecipesTest {
 
     @Test
     @SuppressWarnings("PMD.JUnitTestsShouldIncludeAssert")
-    public void recipes_list_returns_200() {
+    void recipes_list_returns_200() {
         get("/recipes").then().statusCode(200);
     }
 }

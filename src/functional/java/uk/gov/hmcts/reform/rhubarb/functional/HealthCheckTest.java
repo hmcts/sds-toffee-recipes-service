@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import static io.restassured.RestAssured.get;
 
-public class HealthCheckTest {
+class HealthCheckTest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(HealthCheckTest.class);
 
@@ -27,7 +27,7 @@ public class HealthCheckTest {
 
     @Test
     @Tag("SmokeTest")
-    public void healthcheck_returns_200() {
+    void healthcheck_returns_200() {
         get("/health").then().statusCode(200);
     }
 }
