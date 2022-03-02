@@ -1,4 +1,6 @@
 *
 
+!acb.yaml
+!Dockerfile
 !lib/*
 !build/libs/sds-toffee-recipes-service.jar
