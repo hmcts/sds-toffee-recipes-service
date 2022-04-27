@@ -8,7 +8,7 @@ spring:
   config:
     import: "optional:configtree:/mnt/secrets/toffeesi/,optional:configtree:/mnt/secrets/applesi/"
   datasource:
-    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DATABASE:plum}?sslmode=${POSTGRES_SSL_MODE:require}
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DATABASE:toffee}?sslmode=${POSTGRES_SSL_MODE:require}
     username: ${POSTGRES_USER}
     password: ${POSTGRES_PASSWORD:}
     properties:
@@ -25,6 +25,9 @@ spring:
     abandonWhenPercentageFull: 0
     testOnBorrow: true
     validationQuery: SELECT 1
+
+springdoc:
+  packagesToScan: uk.gov.hmcts.reform.rhubarb.recipes.endpoint
 
 management:
   endpoint:

@@ -2,6 +2,3 @@ java:
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
-  aadIdentityName: apple
-  environment:
-    POSTGRES_SSL_MODE: require

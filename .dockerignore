@@ -1,4 +1,6 @@
 *
 
+!acb.yaml
+!Dockerfile
 !lib/*
-!build/libs/moj-rhubarb-recipes-service.jar
+!build/libs/sds-toffee-recipes-service.jar

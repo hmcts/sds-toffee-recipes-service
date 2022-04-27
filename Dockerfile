@@ -1,7 +1,7 @@
-ARG APP_INSIGHTS_AGENT_VERSION=2.5.0
-FROM hmctspublic.azurecr.io/base/java:openjdk-11-distroless-1.3
+ARG APP_INSIGHTS_AGENT_VERSION=3.2.4
+ARG PLATFORM=""
+FROM hmctspublic.azurecr.io/base/java${PLATFORM}:17-distroless
 
-COPY lib/AI-Agent.xml /opt/app/
-COPY build/libs/moj-rhubarb-recipes-service.jar /opt/app/
+COPY build/libs/sds-toffee-recipes-service.jar /opt/app/
 
-CMD ["moj-rhubarb-recipes-service.jar"]
+CMD ["sds-toffee-recipes-service.jar"]
