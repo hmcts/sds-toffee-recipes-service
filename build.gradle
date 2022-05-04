@@ -144,14 +144,14 @@ task highLevelDataSetup {
   println "highLevelDataSetup task has been called"
 }
 
-task smoke(type: Test, description: 'Runs the smoke tests.', group: 'Verification') {
-  testClassesDirs = sourceSets.functional.output.classesDirs
-  classpath = sourceSets.functional.runtimeClasspath
+// task smoke(type: Test, description: 'Runs the smoke tests.', group: 'Verification') {
+//   testClassesDirs = sourceSets.functional.output.classesDirs
+//   classpath = sourceSets.functional.runtimeClasspath
 
-  useJUnitPlatform {
-    includeTags "SmokeTest"
-  }
-}
+//   useJUnitPlatform {
+//     includeTags "SmokeTest"
+//   }
+// }
 
 task functional(type: Test, description: 'Runs the functional tests.', group: 'Verification') {
   testClassesDirs = sourceSets.functional.output.classesDirs
