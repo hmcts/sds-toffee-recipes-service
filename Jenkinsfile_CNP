@@ -1,6 +1,6 @@
 #!groovy
 
-@Library("Infrastructure") _
+@Library("Infrastructure@DTSPO-9278-jenkins-library-update")_
 
 def type = "java"
 def product = "toffee"
