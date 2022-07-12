@@ -17,7 +17,7 @@ properties([
   ])
 ])
 
-library "Infrastructure@${params.LIB_VERSION}"
+library "Infrastructure@DTSPO-9278-jenkins-library-update"
 
 def type = "java"
 def product = "apple"
