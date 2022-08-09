@@ -32,14 +32,14 @@ data "azurerm_key_vault" "key_vault" {
   resource_group_name = local.shared_infra_rg
 }
 
-resource "azurerm_key_vault_secret" "POSTGRES-USER" {
-  name         = "recipe-backend-POSTGRES-USER"
-  value        = module.recipe-database.user_name
+resource "azurerm_key_vault_secret" "POSTGRES-PASS" {
+  name         = "recipe-backend-POSTGRES-PASS"
+  value        = module.recipe-database.postgresql_password
   key_vault_id = data.azurerm_key_vault.key_vault.id
 }
 
-resource "azurerm_key_vault_secret" "POSTGRES-PASS" {
-  name         = "recipe-backend-POSTGRES-PASS"
+resource "azurerm_key_vault_secret" "POSTGRES-PASS2" {
+  name         = "recipe-backend-POSTGRES-PASS2"
   value        = module.recipe-database.postgresql_password
   key_vault_id = data.azurerm_key_vault.key_vault.id
 }
