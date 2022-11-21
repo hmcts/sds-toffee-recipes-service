@@ -119,7 +119,7 @@ dependencies {
     exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
   }
   testImplementation group: 'io.rest-assured', name: 'rest-assured'
-  testImplementation group: 'com.typesafe', name: 'config', version: '1.4.1'
+  testImplementation group: 'com.typesafe', name: 'config', version: '1.4.2'
   testImplementation "org.testcontainers:junit-jupiter:1.17.6"
   testImplementation "org.testcontainers:postgresql:1.17.6"
 }
