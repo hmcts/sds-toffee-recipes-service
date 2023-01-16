@@ -1,7 +1,0 @@
-CREATE TABLE recipe (
-  id VARCHAR(256) NOT NULL PRIMARY KEY,
-  user_id VARCHAR(256) NOT NULL,
-  name VARCHAR(256) NOT NULL,
-  ingredients TEXT NOT NULL,
-  method TEXT NOT NULL
-);
