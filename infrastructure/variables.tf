@@ -14,8 +14,6 @@ variable "env" {
 variable "subscription" {
 }
 
-variable "ilbIp" {}
-
 variable "tenant_id" {}
 
 variable "jenkins_AAD_objectId" {
@@ -24,10 +22,6 @@ variable "jenkins_AAD_objectId" {
 
 variable "capacity" {
   default = "1"
-}
-
-variable "deployment_namespace" {
-  default = ""
 }
 
 # thumbprint of the SSL certificate for API gateway tests
