@@ -1,6 +1,6 @@
 #!groovy
 
-@Library("Infrastructure") _
+@Library("Infrastructure@DTSPO-7161-Enable-syncBranchesWithMaster") _
 
 def type = "java"
 def product = "toffee"
@@ -15,4 +15,8 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
   ]
 }
 
-withPipeline(type, product, component) {}
+def branchesToSync = []
+
+withPipeline(type, product, component) {
+  syncBranchesWithMaster(branchesToSync)
+}
