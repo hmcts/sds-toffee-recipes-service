@@ -1,6 +1,6 @@
 #!groovy
 
-@Library("Infrastructure@DTSPO-7161-Enable-syncBranchesWithMaster") _
+@Library("Infrastructure@DTSPO-7161-enable-syncBranchesWithMaster-by-default") _
 
 def type = "java"
 def product = "toffee"
