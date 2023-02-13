@@ -1,7 +1,7 @@
 java:
   # Don't modify below here
   image: ${IMAGE_NAME}
-  ingressHost: ${SERVICE_FQDN}
+  ingressHost: test-ingress.dev.platform.hmcts.net
   postgresql:
     enabled: true
   disableKeyVaults: true
