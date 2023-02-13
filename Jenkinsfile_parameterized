@@ -27,7 +27,10 @@ properties([
   pipelineTriggers([[$class: 'GitHubPushTrigger']])
 ])
 
+def expiresAfter = "3000-01-01"
 
 env.KEEP_DIR_FOR_DEBUGGING = 'true'
 
-withParameterizedPipeline(params.TYPE, params.PRODUCT_NAME, params.APP, 'sbox', 'sbox') {}
+withParameterizedPipeline(params.TYPE, params.PRODUCT_NAME, params.APP, 'sbox', 'sbox') {
+  expires(expiresAfter)
+}
