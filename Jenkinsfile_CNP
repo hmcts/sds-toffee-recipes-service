@@ -15,7 +15,7 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
   ]
 }
 
-def branchesToSync = ['ithc', 'perftest']
+def branchesToSync = ['false']
 
 withPipeline(type, product, component) {
   syncBranchesWithMaster(branchesToSync)
