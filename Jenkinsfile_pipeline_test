@@ -22,6 +22,7 @@ library "Infrastructure@${params.LIB_VERSION}"
 def type = "java"
 def product = "apple"
 def app = "recipe-backend"
+expiresAfter = "3000-01-01"
 
 static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
   [ $class: 'AzureKeyVaultSecret',
@@ -36,4 +37,5 @@ withPipeline(type, product, app) {
   // never skip stages when testing the pipeline
   env.NO_SKIP_IMG_BUILD = 'true'
   enablePerformanceTest()
+  expires(expiresAfter)
 }
