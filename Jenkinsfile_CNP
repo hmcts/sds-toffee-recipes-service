@@ -15,8 +15,4 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
   ]
 }
 
-def expiresAfter = "3000-01-01"
-
-withPipeline(type, product, component) {
-  expires(expiresAfter)
-}
+withPipeline(type, product, component) {}
