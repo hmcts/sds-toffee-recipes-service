@@ -2,7 +2,3 @@
 output "api_gateway_url" {
   value = "https://core-api-mgmt-${var.env}.azure-api.net/${local.api_base_path}"
 }
-
-output "test" {
-  value = "test"
-}
