@@ -27,7 +27,7 @@ properties([
   pipelineTriggers([[$class: 'GitHubPushTrigger']])
 ])
 
-def expiresAfter = "3000-01-01"
+def expiresAfter = "2999-01-01"
 
 env.KEEP_DIR_FOR_DEBUGGING = 'true'
 
