@@ -22,7 +22,7 @@ library "Infrastructure@${params.LIB_VERSION}"
 def type = "java"
 def product = "apple"
 def app = "recipe-backend"
-expiresAfter = "3000-01-01"
+def expiresAfter = "3000-01-01"
 
 static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
   [ $class: 'AzureKeyVaultSecret',
