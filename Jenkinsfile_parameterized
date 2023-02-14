@@ -27,7 +27,6 @@ properties([
   pipelineTriggers([[$class: 'GitHubPushTrigger']])
 ])
 
-
 env.KEEP_DIR_FOR_DEBUGGING = 'true'
 
 withParameterizedPipeline(params.TYPE, params.PRODUCT_NAME, params.APP, 'sbox', 'sbox') {}
