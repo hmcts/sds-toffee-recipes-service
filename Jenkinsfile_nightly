@@ -11,4 +11,6 @@ def type = "java"
 def product = "toffee"
 def component = "recipe-backend"
 
-withNightlyPipeline(type, product, component) {}
+withNightlyPipeline(type, product, component) {
+  enableSecurityScanBackend()
+}
