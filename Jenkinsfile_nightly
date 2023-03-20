@@ -11,7 +11,7 @@ properties([
         ])
 ])
 
-@Library("Infrastructure@DTSPO-7198")
+@Library("Infrastructure")
 
 def type = "java"
 def product = "toffee"
@@ -20,5 +20,5 @@ def component = "recipe-backend"
 withNightlyPipeline(type, product, component) {
   env.TEST_URL = params.URL_TO_TEST
   env.SecurityRules = params.SecurityRules
-  enableSecurityScanBackend()
+  enableSecurityScan()
 }
