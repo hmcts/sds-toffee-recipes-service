@@ -1,4 +1,6 @@
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "schedule": "after 7am and before 11am every weekday",
   "enabledManagers": ["helm-requirements","gradle-wrapper"],
   "labels": ["dependencies"],
   "helm-requirements":
@@ -7,5 +9,8 @@
       "aliases": {
         "hmctspublic": "https://hmctspublic.azurecr.io/helm/v1/repo/"
       }
-    }
+    },
+  "automerge": true,
+  "automergeType": "pr",
+  "platformAutomerge": true
 }
