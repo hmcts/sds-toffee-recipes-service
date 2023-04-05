@@ -82,4 +82,25 @@ module "recipe-database" {
   business_area      = "SDS"
 }
 
+module "postgresql_flexible" {
+  providers = {
+    azurerm.postgres_network = azurerm.postgres_network
+  }
 
+  source        = "git@github.com:hmcts/terraform-module-postgresql-flexible?ref=master"
+  env           = var.env
+  product       = var.product
+  name          = "${var.product}-v11-flexible"
+  component     = var.component
+  business_area = "SDS"
+  location      = var.location
+
+  common_tags = var.common_tags
+  pgsql_databases = [
+    {
+      name : "toffee"
+    }
+  ]
+
+  pgsql_version = "14"
+}
