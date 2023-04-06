@@ -1,11 +1,11 @@
 name: apple-recipe-backend
 apiVersion: v2
 home: https://github.com/hmcts/sds-toffee-recipes-service
-version: 0.2.9
+version: 0.2.10
 description: This is for Jenkins pipeline tests of toffee /apple app.
 maintainers:
   - name: HMCTS Platform Operations Team
 dependencies:
   - name: java
-    version: 4.0.13
+    version: 4.1.0
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
