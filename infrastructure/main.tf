@@ -111,7 +111,7 @@ module "postgresql_flexible" {
   product       = var.product
   name          = "${var.product}-v14-flexible"
   component     = var.component
-  business_area = "SDS"
+  business_area = "sds"
   location      = var.location
 
   common_tags = var.common_tags
