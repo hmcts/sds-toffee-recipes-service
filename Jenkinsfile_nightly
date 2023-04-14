@@ -11,7 +11,7 @@ properties([
         ])
 ])
 
-@Library("Infrastructure@DTSPO-7198-SecurityScan")
+@Library("Infrastructure@SecurityScan_AddCustomConfig_Backend")
 
 def type = "java"
 def product = "toffee"
