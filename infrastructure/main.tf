@@ -81,7 +81,7 @@ resource "azurerm_key_vault_secret" "POSTGRES-PASS-V14" {
   key_vault_id = data.azurerm_key_vault.key_vault.id
 }
 resource "azurerm_key_vault_secret" "POSTGRES_HOST_V14" {
-  name         = "recipe-backend-POSTGRES-HOST-V14"
+  name         = "recipe-backend-POSTGRES-HOST-v14"
   value        = module.postgresql_flexible.fqdn
   key_vault_id = data.azurerm_key_vault.key_vault.id
 }
