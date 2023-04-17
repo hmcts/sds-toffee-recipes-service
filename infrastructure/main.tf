@@ -80,6 +80,11 @@ resource "azurerm_key_vault_secret" "POSTGRES-PASS-V14" {
   value        = module.postgresql_flexible.password
   key_vault_id = data.azurerm_key_vault.key_vault.id
 }
+resource "azurerm_key_vault_secret" "POSTGRES_HOST_V14" {
+  name         = "recipe-backend-POSTGRES-HOST-V14"
+  value        = module.postgresql_flexible.fqdn
+  key_vault_id = data.azurerm_key_vault.key_vault.id
+}
 
 module "recipe-database" {
   source             = "git@github.com:hmcts/cnp-module-postgres?ref=postgresql_tf"
