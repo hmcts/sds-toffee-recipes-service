@@ -27,7 +27,7 @@ java {
 }
 
 checkstyle {
-  toolVersion = '9.3'
+  toolVersion = '10.9.3'
   configFile = new File(rootDir, "checkstyle.xml")
   maxWarnings = 0
 }
