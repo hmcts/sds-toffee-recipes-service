@@ -1,6 +1,6 @@
 #!groovy
 
-@Library("Infrastructure") _
+@Library("Infrastructure@DTSPO-13332/owasp-flex-server") _
 
 def type = "java"
 def product = "toffee"
