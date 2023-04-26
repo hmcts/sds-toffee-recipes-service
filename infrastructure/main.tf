@@ -51,23 +51,6 @@ resource "azurerm_key_vault_secret" "POSTGRES_DATABASE" {
   key_vault_id = data.azurerm_key_vault.key_vault.id
 }
 
-resource "azurerm_key_vault_secret" "POSTGRES-USER-V14" {
-  name         = "recipe-backend-POSTGRES-USER-v14"
-  value        = module.postgresql_flexible.username
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-
-resource "azurerm_key_vault_secret" "POSTGRES-PASS-V14" {
-  name         = "recipe-backend-POSTGRES-PASS-v14"
-  value        = module.postgresql_flexible.password
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-resource "azurerm_key_vault_secret" "POSTGRES_HOST_V14" {
-  name         = "recipe-backend-POSTGRES-HOST-v14"
-  value        = module.postgresql_flexible.fqdn
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-
 resource "azurerm_key_vault_secret" "POSTGRES-USER" {
   name         = "recipe-backend-POSTGRES-USER"
   value        = module.postgresql_flexible.user_name
