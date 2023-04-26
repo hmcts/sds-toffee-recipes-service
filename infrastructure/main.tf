@@ -11,6 +11,7 @@ provider "azurerm" {
 
 locals {
   app        = "recipe-backend"
+
   create_api = var.env != "preview" && var.env != "spreview"
 
   # list of the thumbprints of the SSL certificates that should be accepted by the API (gateway)
@@ -39,33 +40,21 @@ data "azurerm_key_vault" "key_vault" {
   resource_group_name = local.shared_infra_rg
 }
 
-resource "azurerm_key_vault_secret" "POSTGRES_PORT" {
-  name         = "recipe-backend-POSTGRES-PORT"
-  value        = module.postgresql_flexible.postgresql_listen_port
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-
-resource "azurerm_key_vault_secret" "POSTGRES_DATABASE" {
-  name         = "recipe-backend-POSTGRES-DATABASE"
-  value        = module.postgresql_flexible.postgresql_database
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-
 resource "azurerm_key_vault_secret" "POSTGRES-USER" {
   name         = "recipe-backend-POSTGRES-USER"
-  value        = module.postgresql_flexible.user_name
+  value        = module.postgresql_flexible.username
   key_vault_id = data.azurerm_key_vault.key_vault.id
 }
 
 resource "azurerm_key_vault_secret" "POSTGRES-PASS" {
   name         = "recipe-backend-POSTGRES-PASS"
-  value        = module.postgresql_flexible.postgresql_password
+  value        = module.postgresql_flexible.password
   key_vault_id = data.azurerm_key_vault.key_vault.id
 }
 
 resource "azurerm_key_vault_secret" "POSTGRES_HOST" {
   name         = "recipe-backend-POSTGRES-HOST"
-  value        = module.postgresql_flexible.host_name
+  value        = module.postgresql_flexible.fqdn
   key_vault_id = data.azurerm_key_vault.key_vault.id
 }
 
@@ -86,7 +75,7 @@ module "postgresql_flexible" {
   admin_user_object_id = var.jenkins_AAD_objectId
   pgsql_databases = [
     {
-      name : "toffee"
+      name : local.database_name
     }
   ]
 
