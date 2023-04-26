@@ -75,7 +75,7 @@ module "postgresql_flexible" {
   admin_user_object_id = var.jenkins_AAD_objectId
   pgsql_databases = [
     {
-      name : local.database_name
+      name : "toffee"
     }
   ]
 
