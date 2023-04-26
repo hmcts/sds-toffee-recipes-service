@@ -39,33 +39,15 @@ data "azurerm_key_vault" "key_vault" {
   resource_group_name = local.shared_infra_rg
 }
 
-resource "azurerm_key_vault_secret" "POSTGRES-USER" {
-  name         = "recipe-backend-POSTGRES-USER"
-  value        = module.recipe-database.user_name
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-
-resource "azurerm_key_vault_secret" "POSTGRES-PASS" {
-  name         = "recipe-backend-POSTGRES-PASS"
-  value        = module.recipe-database.postgresql_password
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-
-resource "azurerm_key_vault_secret" "POSTGRES_HOST" {
-  name         = "recipe-backend-POSTGRES-HOST"
-  value        = module.recipe-database.host_name
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-
 resource "azurerm_key_vault_secret" "POSTGRES_PORT" {
   name         = "recipe-backend-POSTGRES-PORT"
-  value        = module.recipe-database.postgresql_listen_port
+  value        = module.postgresql_flexible.postgresql_listen_port
   key_vault_id = data.azurerm_key_vault.key_vault.id
 }
 
 resource "azurerm_key_vault_secret" "POSTGRES_DATABASE" {
   name         = "recipe-backend-POSTGRES-DATABASE"
-  value        = module.recipe-database.postgresql_database
+  value        = module.postgresql_flexible.postgresql_database
   key_vault_id = data.azurerm_key_vault.key_vault.id
 }
 
@@ -84,26 +66,6 @@ resource "azurerm_key_vault_secret" "POSTGRES_HOST_V14" {
   name         = "recipe-backend-POSTGRES-HOST-v14"
   value        = module.postgresql_flexible.fqdn
   key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-
-module "recipe-database" {
-  source             = "git@github.com:hmcts/cnp-module-postgres?ref=postgresql_tf"
-  product            = var.product
-  name               = "${var.product}-v11"
-  location           = var.location
-  env                = var.env
-  postgresql_user    = "rhubarbadmin"
-  database_name      = "rhubarb-v11"
-  postgresql_version = "11"
-  subnet_id          = data.azurerm_subnet.postgres.id
-  sku_name           = "GP_Gen5_2"
-  sku_tier           = "GeneralPurpose"
-  storage_mb         = "51200"
-  common_tags        = var.common_tags
-  subscription       = var.subscription
-  key_vault_rg       = "genesis-rg"
-  key_vault_name     = "dtssharedservices${var.env}kv"
-  business_area      = "SDS"
 }
 
 module "postgresql_flexible" {
