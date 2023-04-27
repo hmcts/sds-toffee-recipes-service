@@ -10,8 +10,6 @@ java:
   keyVaults:
     "toffeesi":
       secrets:
-        - name: recipe-backend-POSTGRES-DATABASE
-          alias: POSTGRES_DATABASE
         - name: recipe-backend-POSTGRES-HOST
           alias: POSTGRES_HOST
         - name: recipe-backend-POSTGRES-USER
