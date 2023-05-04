@@ -57,6 +57,13 @@ resource "azurerm_key_vault_secret" "POSTGRES_HOST" {
   value        = module.postgresql_flexible.fqdn
   key_vault_id = data.azurerm_key_vault.key_vault.id
 }
+  
+  
+resource "azurerm_key_vault_secret" "POSTGRES_DATABASE" {
+  name         = "recipe-backend-POSTGRES-DATABASE"
+  value        = "toffee"
+  key_vault_id = data.azurerm_key_vault.key_vault.id
+}
 
 module "postgresql_flexible" {
     providers = {
