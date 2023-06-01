@@ -120,8 +120,8 @@ dependencies {
   }
   testImplementation group: 'io.rest-assured', name: 'rest-assured'
   testImplementation group: 'com.typesafe', name: 'config', version: '1.4.2'
-  testImplementation "org.testcontainers:junit-jupiter:1.18.2"
-  testImplementation "org.testcontainers:postgresql:1.18.2"
+  testImplementation "org.testcontainers:junit-jupiter:1.18.3"
+  testImplementation "org.testcontainers:postgresql:1.18.3"
 }
 
 mainClassName = 'uk.gov.hmcts.reform.rhubarb.recipes.Application'
