@@ -1,6 +1,7 @@
 variable "product" {
   default = "toffee"
 }
+
 variable "component" {}
 
 variable "location" {
