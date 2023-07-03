@@ -16,5 +16,19 @@ java:
           alias: POSTGRES_USER
         - name: recipe-backend-POSTGRES-PASS
           alias: POSTGRES_PASSWORD
+        - name: recipe-backend-POSTGRES-DATABASE-SOURCE
+          alias: POSTGRES_DATABASE_SOURCE          
+        - name: recipe-backend-POSTGRES-HOST-SOURCE
+          alias: POSTGRES_HOST_SOURCE
+        - name: recipe-backend-POSTGRES-USER-SOURCE
+          alias: POSTGRES_USER_SOURCE
+        - name: recipe-backend-POSTGRES-PASS-SOURCE
+          alias: POSTGRES_PASSWORD_SOURCE
+        - name: recipe-backend-POSTGRES-HOST-DESTINATION
+          alias: POSTGRES_HOST_DESTINATION
+        - name: recipe-backend-POSTGRES-USER-DESTINATION
+          alias: POSTGRES_USER_DESTINATION
+        - name: recipe-backend-POSTGRES-PASS-DESTINATION
+          alias: POSTGRES_PASSWORD_DESTINATION
         - name: recipe-backend-app-insights-config
           alias: app-insights-config
