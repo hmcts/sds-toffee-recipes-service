@@ -191,7 +191,7 @@ See the steps listed [here](#get-subscription-key) in order to get a subscriptio
 retrieved one, save it in Azure Key Vault:
 
 ```
-az keyvault secret set --vault-name rhubarb-{environment} --name test-client-subscription-key --value {the subscription key}
+az keyvault secret set --vault-name toffee-{environment} --name test-client-subscription-key --value {the subscription key}
 ```
 
 ## License
