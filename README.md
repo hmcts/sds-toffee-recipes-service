@@ -1,4 +1,4 @@
-# Plum Recipes API
+# Toffee Recipes API
 
 ## Purpose
 
