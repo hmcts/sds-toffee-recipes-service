@@ -196,4 +196,4 @@ az keyvault secret set --vault-name toffee-{environment} --name test-client-subs
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENCE](LICENCE.md) file for details.
