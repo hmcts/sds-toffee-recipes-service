@@ -1,6 +1,6 @@
 #!groovy
 
-@Library("Infrastructure@DTSPO-13917-NAGGER-HELM-WARNING") _   
+@Library("Infrastructure@DTSPO-13917-NAGGER-HELM-WARNING") _  
 
 def type = "java"
 def product = "toffee"
