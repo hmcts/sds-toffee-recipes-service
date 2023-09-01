@@ -189,5 +189,4 @@ module "flexible_database_destination" {
   ]
 
   pgsql_version = "14"
-  public_access = true
 }
