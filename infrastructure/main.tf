@@ -96,31 +96,6 @@ resource "azurerm_key_vault_secret" "POSTGRES-DATABASE-SOURCE" {
   key_vault_id = data.azurerm_key_vault.key_vault.id
 }
 
-# secrets for flexible server (destination) - for DMS migration testing only
-resource "azurerm_key_vault_secret" "POSTGRES-USER-DESTINATION" {
-  name         = "recipe-backend-POSTGRES-USER-DESTINATION"
-  value        = module.flexible_database_destination.username
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-
-resource "azurerm_key_vault_secret" "POSTGRES-PASS-DESTINATION" {
-  name         = "recipe-backend-POSTGRES-PASS-DESTINATION"
-  value        = module.flexible_database_destination.password
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-
-resource "azurerm_key_vault_secret" "POSTGRES_HOST-DESTINATION" {
-  name         = "recipe-backend-POSTGRES-HOST-DESTINATION"
-  value        = module.flexible_database_destination.fqdn
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-  
-resource "azurerm_key_vault_secret" "POSTGRES_DATABASE-DESTINATION" {
-  name         = "recipe-backend-POSTGRES-DATABASE-DESTINATION"
-  value        = "toffee"
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-
 module "postgresql_flexible" {
     providers = {
     azurerm.postgres_network = azurerm.postgres_network
@@ -164,29 +139,4 @@ module "single_database_source" {
   key_vault_rg       = "genesis-rg"
   key_vault_name     = "dtssharedservices${var.env}kv"
   business_area      = "SDS"
-}
-
-# flexible server (destination) - for DMS migration testing only
-module "flexible_database_destination" {
-    providers = {
-    azurerm.postgres_network = azurerm.postgres_network
-  }
-
-  source        = "git@github.com:hmcts/terraform-module-postgresql-flexible?ref=master"
-  env           = var.env
-  product       = var.product
-  name          = "${var.product}-v14-flexible-destination"
-  component     = var.component
-  business_area = "sds"
-  location      = var.location
-
-  common_tags = var.common_tags
-  admin_user_object_id = var.jenkins_AAD_objectId
-  pgsql_databases = [
-    {
-      name : "toffee"
-    }
-  ]
-
-  pgsql_version = "14"
 }
