@@ -34,7 +34,7 @@ checkstyle {
 }
 
 ext {
-  lombokVersion = '1.18.28'
+  lombokVersion = '1.18.30'
 }
 
 // https://jeremylong.github.io/DependencyCheck/dependency-check-gradle/configuration.html
