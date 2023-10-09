@@ -18,7 +18,7 @@ services:
     ports:
       - 9080:4550
   postgres:
-   image: postgres:15-alpine
+   image: postgres:16-alpine
    environment:
      POSTGRES_USER: toffee
      POSTGRES_PASSWORD: toffee
