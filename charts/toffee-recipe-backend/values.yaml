@@ -17,3 +17,5 @@ java:
           alias: POSTGRES_PASSWORD
         - name: recipe-backend-app-insights-config
           alias: app-insights-config
+
+
