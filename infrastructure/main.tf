@@ -96,6 +96,31 @@ resource "azurerm_key_vault_secret" "POSTGRES-DATABASE-SOURCE" {
   key_vault_id = data.azurerm_key_vault.key_vault.id
 }
 
+# secrets for flexible server (source) - for DMS migration testing only
+resource "azurerm_key_vault_secret" "POSTGRES-USER-SOURCE2" {
+  name         = "recipe-backend-POSTGRES-USER-SOURCE2"
+  value        = module.flexible_database_source2.username
+  key_vault_id = data.azurerm_key_vault.key_vault.id
+}
+
+resource "azurerm_key_vault_secret" "POSTGRES-PASS-SOURCE2" {
+  name         = "recipe-backend-POSTGRES-PASS-SOURCE2"
+  value        = module.flexible_database_source2.password
+  key_vault_id = data.azurerm_key_vault.key_vault.id
+}
+
+resource "azurerm_key_vault_secret" "POSTGRES_HOST-SOURCE2" {
+  name         = "recipe-backend-POSTGRES-HOST-SOURCE2"
+  value        = module.flexible_database_source2.fqdn
+  key_vault_id = data.azurerm_key_vault.key_vault.id
+}
+  
+resource "azurerm_key_vault_secret" "POSTGRES_DATABASE-SOURCE2" {
+  name         = "recipe-backend-POSTGRES-DATABASE-SOURCE2"
+  value        = "toffee"
+  key_vault_id = data.azurerm_key_vault.key_vault.id
+}
+
 # secrets for flexible server (destination) - for DMS migration testing only
 resource "azurerm_key_vault_secret" "POSTGRES-USER-DESTINATION" {
   name         = "recipe-backend-POSTGRES-USER-DESTINATION"
@@ -164,6 +189,31 @@ module "single_database_source" {
   key_vault_rg       = "genesis-rg"
   key_vault_name     = "dtssharedservices${var.env}kv"
   business_area      = "SDS"
+}
+
+# flexible server (source) - for DMS migration testing only
+module "flexible_database_source2" {
+    providers = {
+    azurerm.postgres_network = azurerm.postgres_network
+  }
+
+  source        = "git@github.com:hmcts/terraform-module-postgresql-flexible?ref=master"
+  env           = var.env
+  product       = var.product
+  name          = "${var.product}-v14-flexible-source2"
+  component     = var.component
+  business_area = "sds"
+  location      = var.location
+
+  common_tags = var.common_tags
+  admin_user_object_id = var.jenkins_AAD_objectId
+  pgsql_databases = [
+    {
+      name : "toffee"
+    }
+  ]
+
+  pgsql_version = "14"
 }
 
 # flexible server (destination) - for DMS migration testing only
