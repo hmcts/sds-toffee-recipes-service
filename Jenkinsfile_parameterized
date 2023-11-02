@@ -1,5 +1,5 @@
 #!groovy
-@Library(value="Infrastructure", changelog=false)
+@Library(value="Infrastructure@DTSPO-15108-Add-auto-env-start", changelog=false)
 
 List<LinkedHashMap<String, Object>> apiTestSecrets = [
   secret('test-client-key-store', 'TEST_CLIENT_KEY_STORE'),

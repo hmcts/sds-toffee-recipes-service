@@ -13,7 +13,7 @@
 
 properties([
   parameters([
-    string(name: 'LIB_VERSION', defaultValue: 'master', description: 'Branch name of pipeline library to use')
+    string(name: 'LIB_VERSION', defaultValue: 'DTSPO-15108-Add-auto-env-start', description: 'Branch name of pipeline library to use')
   ])
 ])
 

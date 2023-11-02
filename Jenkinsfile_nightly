@@ -11,7 +11,7 @@ properties([
       ])
 ])
 
-@Library("Infrastructure")
+@Library("Infrastructure@DTSPO-15108-Add-auto-env-start")
 
 def type = "java"
 def product = "toffee"
