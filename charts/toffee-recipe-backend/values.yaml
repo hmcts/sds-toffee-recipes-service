@@ -17,5 +17,3 @@ java:
           alias: POSTGRES_PASSWORD
         - name: recipe-backend-app-insights-config
           alias: app-insights-config
-  ingressAnnotations:
-    external-dns.alpha.kubernetes.io/exclude: "true"
