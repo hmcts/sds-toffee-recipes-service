@@ -11,5 +11,3 @@ java:
     POSTGRES_DATABASE: "{{ .Values.postgresql.auth.database }}"
     POSTGRES_USER: "{{ .Values.postgresql.auth.username }}"
     POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
-  ingressAnnotations:
-    external-dns.alpha.kubernetes.io/exclude: "true"
