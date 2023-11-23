@@ -16,7 +16,7 @@ group = 'uk.gov.hmcts.reform'
 version = '0.0.1'
 
 pmd {
-  toolVersion = "6.51.0"
+  toolVersion = "6.55.0"
   reportsDir = file("$project.buildDir/reports/pmd")
   ruleSetFiles = files("config/pmd/ruleset.xml")
 }
