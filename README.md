@@ -98,12 +98,12 @@ It should look similar to this:
 ```
   locals {
     ...
-    
+
     allowed_certificate_thumbprints = [
       "${var.api_gateway_test_certificate_thumbprint}",
       "8D81D05C0154423AE548D709CDDF9549E826C036" # thumbprint of your new certificate
     ]
-    
+
     ...
   }
 ```
