@@ -1,9 +1,10 @@
 package uk.gov.hmcts.reform.rhubarb.recipes.endpoint;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.ServletRequestBindingException;
@@ -13,8 +14,6 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import uk.gov.hmcts.reform.rhubarb.recipes.domain.ErrorResult;
 import uk.gov.hmcts.reform.rhubarb.recipes.exception.NoRecipeFoundException;
-
-import javax.servlet.http.HttpServletRequest;
 
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
@@ -35,7 +34,7 @@ public class EndpointExceptionHandler extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleServletRequestBindingException(
         ServletRequestBindingException ex,
         HttpHeaders headers,
-        HttpStatus status,
+        HttpStatusCode status,
         WebRequest request
     ) {
         LOGGER.error(ex.getMessage(), ex);
@@ -50,7 +49,7 @@ public class EndpointExceptionHandler extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleHttpMessageNotReadable(
         HttpMessageNotReadableException ex,
         HttpHeaders headers,
-        HttpStatus status,
+        HttpStatusCode status,
         WebRequest request
     ) {
         LOGGER.error(ex.getMessage(), ex);
@@ -66,7 +65,7 @@ public class EndpointExceptionHandler extends ResponseEntityExceptionHandler {
         Exception ex,
         Object body,
         HttpHeaders headers,
-        HttpStatus status,
+        HttpStatusCode status,
         WebRequest request
     ) {
         LOGGER.error(ex.getMessage(), ex);
