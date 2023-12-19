@@ -57,89 +57,19 @@ resource "azurerm_key_vault_secret" "POSTGRES_HOST" {
   value        = module.postgresql_flexible.fqdn
   key_vault_id = data.azurerm_key_vault.key_vault.id
 }
-  
-  
+
+
 resource "azurerm_key_vault_secret" "POSTGRES_DATABASE" {
   name         = "recipe-backend-POSTGRES-DATABASE"
   value        = "toffee"
   key_vault_id = data.azurerm_key_vault.key_vault.id
 }
 
-# secrets for single server (source) - for DMS migration testing only
-resource "azurerm_key_vault_secret" "POSTGRES-USER-SOURCE" {
-  name         = "recipe-backend-POSTGRES-USER-SOURCE"
-  value        = module.single_database_source.user_name
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-
-resource "azurerm_key_vault_secret" "POSTGRES-PASS-SOURCE" {
-  name         = "recipe-backend-POSTGRES-PASS-SOURCE"
-  value        = module.single_database_source.postgresql_password
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-
-resource "azurerm_key_vault_secret" "POSTGRES-HOST-SOURCE" {
-  name         = "recipe-backend-POSTGRES-HOST-SOURCE"
-  value        = module.single_database_source.host_name
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-
-resource "azurerm_key_vault_secret" "POSTGRES-PORT-SOURCE" {
-  name         = "recipe-backend-POSTGRES-PORT-SOURCE"
-  value        = module.single_database_source.postgresql_listen_port
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-
-resource "azurerm_key_vault_secret" "POSTGRES-DATABASE-SOURCE" {
-  name         = "recipe-backend-POSTGRES-DATABASE-SOURCE"
-  value        = module.single_database_source.postgresql_database
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-
-# secrets for flexible server (source) - for DMS migration testing only
-resource "azurerm_key_vault_secret" "POSTGRES-USER-SOURCE2" {
-  name         = "recipe-backend-POSTGRES-USER-SOURCE2"
-  value        = module.flexible_database_source2.username
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-
-resource "azurerm_key_vault_secret" "POSTGRES-PASS-SOURCE2" {
-  name         = "recipe-backend-POSTGRES-PASS-SOURCE2"
-  value        = module.flexible_database_source2.password
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-
-resource "azurerm_key_vault_secret" "POSTGRES_HOST-SOURCE2" {
-  name         = "recipe-backend-POSTGRES-HOST-SOURCE2"
-  value        = module.flexible_database_source2.fqdn
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-  
 resource "azurerm_key_vault_secret" "POSTGRES_DATABASE-SOURCE2" {
   name         = "recipe-backend-POSTGRES-DATABASE-SOURCE2"
   value        = "toffee"
   key_vault_id = data.azurerm_key_vault.key_vault.id
 }
-
-# secrets for flexible server (destination) - for DMS migration testing only
-resource "azurerm_key_vault_secret" "POSTGRES-USER-DESTINATION" {
-  name         = "recipe-backend-POSTGRES-USER-DESTINATION"
-  value        = module.flexible_database_destination.username
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-
-resource "azurerm_key_vault_secret" "POSTGRES-PASS-DESTINATION" {
-  name         = "recipe-backend-POSTGRES-PASS-DESTINATION"
-  value        = module.flexible_database_destination.password
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-
-resource "azurerm_key_vault_secret" "POSTGRES_HOST-DESTINATION" {
-  name         = "recipe-backend-POSTGRES-HOST-DESTINATION"
-  value        = module.flexible_database_destination.fqdn
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-  
 resource "azurerm_key_vault_secret" "POSTGRES_DATABASE-DESTINATION" {
   name         = "recipe-backend-POSTGRES-DATABASE-DESTINATION"
   value        = "toffee"
@@ -155,77 +85,6 @@ module "postgresql_flexible" {
   env           = var.env
   product       = var.product
   name          = "${var.product}-v14-flexible"
-  component     = var.component
-  business_area = "sds"
-  location      = var.location
-
-  common_tags = var.common_tags
-  admin_user_object_id = var.jenkins_AAD_objectId
-  pgsql_databases = [
-    {
-      name : "toffee"
-    }
-  ]
-
-  pgsql_version = "14"
-}
-
-# single server (source) - for DMS migration testing only
-module "single_database_source" {
-  source             = "git@github.com:hmcts/cnp-module-postgres?ref=postgresql_tf"
-  product            = var.product
-  name               = "${var.product}-v11-source"
-  location           = var.location
-  env                = var.env
-  postgresql_user    = "rhubarbadmin"
-  database_name      = "rhubarb-v11"
-  postgresql_version = "11"
-  subnet_id          = data.azurerm_subnet.postgres.id
-  sku_name           = "GP_Gen5_2"
-  sku_tier           = "GeneralPurpose"
-  storage_mb         = "51200"
-  common_tags        = var.common_tags
-  subscription       = var.subscription
-  key_vault_rg       = "genesis-rg"
-  key_vault_name     = "dtssharedservices${var.env}kv"
-  business_area      = "SDS"
-}
-
-# flexible server (source) - for DMS migration testing only
-module "flexible_database_source2" {
-    providers = {
-    azurerm.postgres_network = azurerm.postgres_network
-  }
-
-  source        = "git@github.com:hmcts/terraform-module-postgresql-flexible?ref=master"
-  env           = var.env
-  product       = var.product
-  name          = "${var.product}-v14-flexible-source2"
-  component     = var.component
-  business_area = "sds"
-  location      = var.location
-
-  common_tags = var.common_tags
-  admin_user_object_id = var.jenkins_AAD_objectId
-  pgsql_databases = [
-    {
-      name : "toffee"
-    }
-  ]
-
-  pgsql_version = "14"
-}
-
-# flexible server (destination) - for DMS migration testing only
-module "flexible_database_destination" {
-    providers = {
-    azurerm.postgres_network = azurerm.postgres_network
-  }
-
-  source        = "git@github.com:hmcts/terraform-module-postgresql-flexible?ref=master"
-  env           = var.env
-  product       = var.product
-  name          = "${var.product}-v14-flexible-destination"
   component     = var.component
   business_area = "sds"
   location      = var.location
