@@ -99,3 +99,23 @@ module "postgresql_flexible" {
 
   pgsql_version = "14"
 }
+
+module "recipe-database" {
+  source             = "git@github.com:hmcts/cnp-module-postgres?ref=postgresql_tf"
+  product            = var.product
+  name               = "${var.product}-v11"
+  location           = var.location
+  env                = var.env
+  postgresql_user    = "rhubarbadmin"
+  database_name      = "rhubarb-v11"
+  postgresql_version = "11"
+  subnet_id          = data.azurerm_subnet.postgres.id
+  sku_name           = "GP_Gen5_2"
+  sku_tier           = "GeneralPurpose"
+  storage_mb         = "51200"
+  common_tags        = var.common_tags
+  subscription       = var.subscription
+  key_vault_rg       = "genesis-rg"
+  key_vault_name     = "dtssharedservices${var.env}kv"
+  business_area      = "SDS"
+}
