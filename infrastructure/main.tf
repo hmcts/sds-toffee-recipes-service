@@ -58,7 +58,6 @@ resource "azurerm_key_vault_secret" "POSTGRES_HOST" {
   key_vault_id = data.azurerm_key_vault.key_vault.id
 }
 
-
 resource "azurerm_key_vault_secret" "POSTGRES_DATABASE" {
   name         = "recipe-backend-POSTGRES-DATABASE"
   value        = "toffee"
@@ -70,8 +69,23 @@ resource "azurerm_key_vault_secret" "POSTGRES_DATABASE-SOURCE2" {
   value        = "toffee"
   key_vault_id = data.azurerm_key_vault.key_vault.id
 }
+
 resource "azurerm_key_vault_secret" "POSTGRES_DATABASE-DESTINATION" {
   name         = "recipe-backend-POSTGRES-DATABASE-DESTINATION"
+  value        = "toffee"
+  key_vault_id = data.azurerm_key_vault.key_vault.id
+}
+
+resource "azurerm_key_vault_secret" "stg_secret" {
+  count        = var.env == stg ? 1 : 0
+  name         = "stg-secret"
+  value        = "toffee"
+  key_vault_id = data.azurerm_key_vault.key_vault.id
+}
+
+resource "azurerm_key_vault_secret" "prod_secret" {
+  count        = var.env == prod ? 1 : 0
+  name         = "prod-secret"
   value        = "toffee"
   key_vault_id = data.azurerm_key_vault.key_vault.id
 }
