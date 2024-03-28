@@ -76,19 +76,19 @@ resource "azurerm_key_vault_secret" "POSTGRES_DATABASE-DESTINATION" {
   key_vault_id = data.azurerm_key_vault.key_vault.id
 }
 
-#resource "azurerm_key_vault_secret" "stg_secret" {
-#  count        = var.env == "stg" ? 1 : 0
-#  name         = "stg-secret"
-#  value        = "toffee"
-#  key_vault_id = data.azurerm_key_vault.key_vault.id
-#}
+resource "azurerm_key_vault_secret" "stg_secret" {
+  count        = var.env == "stg" ? 1 : 0
+  name         = "stg-secret"
+  value        = "toffee"
+  key_vault_id = data.azurerm_key_vault.key_vault.id
+}
 
-#resource "azurerm_key_vault_secret" "prod_secret" {
-#  count        = var.env == "prod" ? 1 : 0
-#  name         = "prod-secret"
-#  value        = "toffee"
-#  key_vault_id = data.azurerm_key_vault.key_vault.id
-#}
+resource "azurerm_key_vault_secret" "prod_secret" {
+  count        = var.env == "prod" ? 1 : 0
+  name         = "prod-secret"
+  value        = "toffee"
+  key_vault_id = data.azurerm_key_vault.key_vault.id
+}
 
 module "postgresql_flexible" {
     providers = {
