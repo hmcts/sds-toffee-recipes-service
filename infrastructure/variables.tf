@@ -43,3 +43,7 @@ variable "private_dns_subscription_id" {
 variable "common_tags" {
   type = map(string)
 }
+
+variable "dummy" {
+  default = "This is a dummy variable"
+}
