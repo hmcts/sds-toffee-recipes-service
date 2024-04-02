@@ -10,7 +10,7 @@ provider "azurerm" {
 }
 
 locals {
-  app        = "recipe-backend"
+  app        = "recipe-backend2"
 
   create_api = var.env != "preview" && var.env != "spreview"
 
