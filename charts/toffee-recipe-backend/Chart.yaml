@@ -1,11 +1,11 @@
 name: toffee-recipe-backend
 apiVersion: v2
 home: https://github.com/hmcts/sds-toffee-recipes-service
-version: 0.8.37
+version: 0.8.38
 description: HMCTS toffee recipes service (test application)
 maintainers:
   - name: HMCTS Platform Operations Team
 dependencies:
   - name: java
-    version: 5.2.0
+    version: 5.2.1
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
