@@ -183,6 +183,8 @@ dependencies {
   implementation group: 'com.github.hmcts.java-logging', name: 'logging', version: '6.1.4'
   implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.5.0'
 
+  implementation group: 'com.github.hmcts', name: 'properties-volume-spring-boot-starter', version: '0.1.0'
+
   compileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVersion
   annotationProcessor group: 'org.projectlombok', name: 'lombok', version: lombokVersion
 
