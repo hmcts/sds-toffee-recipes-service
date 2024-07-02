@@ -10,7 +10,7 @@ variable "location" {
 variable "env" {
 }
 
-variable aks_subscription_id {
+variable "aks_subscription_id" {
 }
 
 variable "subscription" {
@@ -27,7 +27,7 @@ variable "capacity" {
 }
 
 # thumbprint of the SSL certificate for API gateway tests
-variable api_gateway_test_certificate_thumbprint {
+variable "api_gateway_test_certificate_thumbprint" {
   # keeping this empty by default, so that no thumbprint will match
   default = ""
 }
