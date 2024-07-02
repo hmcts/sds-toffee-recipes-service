@@ -10,7 +10,7 @@ provider "azurerm" {
 }
 
 locals {
-  app        = "recipe-backend"
+  app = "recipe-backend"
 
   create_api = var.env != "preview" && var.env != "spreview"
 
@@ -77,7 +77,7 @@ resource "azurerm_key_vault_secret" "POSTGRES_DATABASE-DESTINATION" {
 }
 
 module "postgresql_flexible" {
-    providers = {
+  providers = {
     azurerm.postgres_network = azurerm.postgres_network
   }
 
@@ -90,7 +90,7 @@ module "postgresql_flexible" {
   location      = var.location
   create_mode   = "Update"
 
-  common_tags = var.common_tags
+  common_tags          = var.common_tags
   admin_user_object_id = var.jenkins_AAD_objectId
   pgsql_databases = [
     {
