@@ -43,3 +43,7 @@ variable "private_dns_subscription_id" {
 variable "common_tags" {
   type = map(string)
 }
+
+variable "pgsql_sku" {
+  default = "GP_Standard_D2s_v3"
+}
