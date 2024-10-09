@@ -9,6 +9,7 @@ buildscript {
 
 
 plugins {
+  id 'scala'
   id 'application'
   id 'jvm-test-suite'
   id 'checkstyle'
