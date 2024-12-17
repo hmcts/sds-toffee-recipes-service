@@ -179,7 +179,7 @@ dependencies {
   implementation group: 'org.flywaydb', name: 'flyway-core', version: '11.1.0'
   implementation group: 'org.flywaydb', name: 'flyway-database-postgresql', version: '11.1.0'
 
-  implementation group: 'com.google.guava', name: 'guava', version: '33.3.1-jre'
+  implementation group: 'com.google.guava', name: 'guava', version: '33.4.0-jre'
 
   implementation group: 'com.github.hmcts.java-logging', name: 'logging', version: '6.1.7'
   implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.6.0'
