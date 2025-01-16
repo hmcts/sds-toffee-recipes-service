@@ -174,7 +174,7 @@ dependencies {
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc'
-  implementation group: 'org.postgresql', name: 'postgresql', version: '42.7.4'
+  implementation group: 'org.postgresql', name: 'postgresql', version: '42.7.5'
 
   implementation group: 'org.flywaydb', name: 'flyway-core', version: '11.1.1'
   implementation group: 'org.flywaydb', name: 'flyway-database-postgresql', version: '11.1.1'
