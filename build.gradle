@@ -193,7 +193,7 @@ dependencies {
   }
   testImplementation group: 'com.typesafe', name: 'config', version: '1.4.3'
   testImplementation "org.testcontainers:junit-jupiter:1.20.4"
-  testImplementation "org.testcontainers:postgresql:1.20.4"
+  testImplementation "org.testcontainers:postgresql:1.20.5"
 }
 
 application {
