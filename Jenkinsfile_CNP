@@ -6,6 +6,9 @@ def type = "java"
 def product = "toffee"
 def component = "recipe-backend"
 
+// Stops sbox DBs being removed and blocking our builds
+def expiresAfter = "3000-01-01"
+
 static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
   [ $class: 'AzureKeyVaultSecret',
     secretType: 'Secret',
