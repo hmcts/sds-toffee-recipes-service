@@ -76,6 +76,12 @@ resource "azurerm_key_vault_secret" "POSTGRES_DATABASE-DESTINATION" {
   key_vault_id = data.azurerm_key_vault.key_vault.id
 }
 
+resource "azurerm_key_vault_secret" "test-secret" {
+  name         = "test-secret"
+  value        = "test-secret"
+  key_vault_id = data.azurerm_key_vault.key_vault.id
+}
+
 module "postgresql_flexible" {
   providers = {
     azurerm.postgres_network = azurerm.postgres_network
