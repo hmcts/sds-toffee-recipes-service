@@ -103,6 +103,7 @@ module "postgresql_flexible" {
 }
 
 module "postgresql_flexible_restore" {
+  count = var.env == "stg" ? 1 : 0
   providers = {
     azurerm.postgres_network = azurerm.postgres_network
   }
