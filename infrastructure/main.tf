@@ -117,6 +117,7 @@ module "postgresql_flexible_restore" {
   location         = var.location
   create_mode      = "PointInTimeRestore"
   source_server_id = module.postgresql_flexible.instance_id
+  restore_time     = timeadd(timestamp(), "24h") 
 
   common_tags          = var.common_tags
   admin_user_object_id = var.jenkins_AAD_objectId
