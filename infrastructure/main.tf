@@ -128,5 +128,5 @@ module "postgresql_flexible_restore" {
   ]
 
   pgsql_version = "15"
-  pgsql_sku     = var.pgsql_sku
+  pgsql_sku     = "GP_Standard_D4s_v5"
 }
