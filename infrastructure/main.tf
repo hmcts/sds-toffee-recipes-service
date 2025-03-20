@@ -115,9 +115,9 @@ module "postgresql_flexible_restore" {
   component        = var.component
   business_area    = "sds"
   location         = var.location
-  create_mode      = "PointInTimeRestore"
-  source_server_id = module.postgresql_flexible.instance_id
-  restore_time     = timeadd(timestamp(), "24h") 
+  create_mode      = "Default"
+  # source_server_id = module.postgresql_flexible.instance_id
+  # restore_time     = timeadd(timestamp(), "24h")
 
   common_tags          = var.common_tags
   admin_user_object_id = var.jenkins_AAD_objectId
@@ -128,5 +128,5 @@ module "postgresql_flexible_restore" {
   ]
 
   pgsql_version = "15"
-  pgsql_sku     = var.pgsql_sku
+  pgsql_sku     = "GP_Standard_D4s_v3"
 }
