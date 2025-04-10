@@ -111,7 +111,7 @@ module "postgresql_flexible_temp_restore" {
   source           = "git@github.com:hmcts/terraform-module-postgresql-flexible?ref=master"
   env              = var.env
   product          = var.product
-  name             = "${var.product}-v14-flexible"
+  name             = "${var.product}-v14-flexible-temp-restore"
   component        = var.component
   business_area    = "sds"
   location         = var.location
