@@ -103,7 +103,7 @@ module "postgresql_flexible" {
 }
 
 module "postgresql_flexible_temp_restore" {
-  count = var.env == "aat" ? 1 : 0
+  count = var.env == "stg" ? 1 : 0
   providers = {
     azurerm.postgres_network = azurerm.postgres_network
   }
