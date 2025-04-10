@@ -116,7 +116,7 @@ module "postgresql_flexible_temp_restore" {
   business_area    = "sds"
   location         = var.location
   create_mode      = "PointInTimeRestore"
-  restore_time     = timestamp() # UTC time
+  restore_time     = timeadd(timestamp(), "-24h") # UTC time
   source_server_id = module.postgresql_flexible.id
 
   common_tags          = var.common_tags
