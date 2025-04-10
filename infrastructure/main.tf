@@ -108,13 +108,6 @@ module "postgresql_flexible_temp_restore" {
     azurerm.postgres_network = azurerm.postgres_network
   }
 
-  lifecycle {
-    ignore_changes = [
-      # Ignore changes to the restore_time attribute
-      restore_time,
-    ]
-  }
-
   source           = "git@github.com:hmcts/terraform-module-postgresql-flexible?ref=master"
   env              = var.env
   product          = var.product
