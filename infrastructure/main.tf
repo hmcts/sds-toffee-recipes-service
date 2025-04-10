@@ -101,3 +101,32 @@ module "postgresql_flexible" {
   pgsql_version = "15"
   pgsql_sku     = var.pgsql_sku
 }
+
+module "postgresql_flexible_temp_restore" {
+  count = var.env == "stg" ? 1 : 0
+  providers = {
+    azurerm.postgres_network = azurerm.postgres_network
+  }
+
+  source           = "git@github.com:hmcts/terraform-module-postgresql-flexible?ref=master"
+  env              = var.env
+  product          = var.product
+  name             = "${var.product}-v14-flexible-temp-restore"
+  component        = var.component
+  business_area    = "sds"
+  location         = var.location
+  create_mode      = "PointInTimeRestore"
+  restore_time     = timeadd(timestamp(), "-24h") # UTC time
+  source_server_id = module.postgresql_flexible.instance_id
+
+  common_tags          = var.common_tags
+  admin_user_object_id = var.jenkins_AAD_objectId
+  pgsql_databases = [
+    {
+      name : "toffee"
+    }
+  ]
+
+  pgsql_version = "15"
+  pgsql_sku     = var.pgsql_sku
+}
