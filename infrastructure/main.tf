@@ -130,3 +130,13 @@ module "postgresql_flexible_temp_restore" {
   pgsql_version = "15"
   pgsql_sku     = var.pgsql_sku
 }
+
+import {
+  id = "/subscriptions/74dacd4f-a248-45bb-a2f0-af700dc4cf68/resourceGroups/toffee-v14-flexible-temp-restore-data-stg/providers/Microsoft.DBforPostgreSQL/flexibleServers/toffee-v14-flexible-temp-restore-stg/databases/toffee"
+  to = module.postgresql_flexible_temp_restore[0].azurerm_postgresql_flexible_server_database.pg_databases["toffee"]
+}
+
+import {
+  id = "/subscriptions/74dacd4f-a248-45bb-a2f0-af700dc4cf68/resourceGroups/toffee-v14-flexible-temp-restore-data-stg/providers/Microsoft.DBforPostgreSQL/flexibleServers/toffee-v14-flexible-temp-restore-stg/administrators/e7ea2042-4ced-45dd-8ae3-e051c6551789"
+  to = module.postgresql_flexible_temp_restore[0].azurerm_postgresql_flexible_server_active_directory_administrator.pgsql_adadmin
+}
