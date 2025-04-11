@@ -131,7 +131,6 @@ resource "azurerm_postgresql_flexible_server" "postgresql_flexible_server_restor
 
   name                              = "${var.product}-v14-flexible-restore-stg"
   resource_group_name               = module.postgresql_flexible.resource_group_name
-  delegated_subnet_id               = "/subscriptions/74dacd4f-a248-45bb-a2f0-af700dc4cf68/resourceGroups/ss-stg-network-rg/providers/Microsoft.Network/virtualNetworks/ss-stg-vnet/subnets/postgresql"
   public_network_access_enabled     = false
   location                          = var.location
   sku_name                          = var.pgsql_sku
