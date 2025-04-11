@@ -105,6 +105,13 @@ module "postgresql_flexible" {
 resource "azurerm_postgresql_flexible_server" "postgresql_flexible_server_temp_restore" {
   count = var.env == "stg" ? 1 : 0
 
+  lifecycle {
+    ignore_changes = [
+      # Ignore changes to the point_in_time_restore_time_in_utc attribute
+      point_in_time_restore_time_in_utc,
+    ]
+  }
+
   name                              = "${var.product}-v14-flexible-restore-temp-stg"
   resource_group_name               = module.postgresql_flexible.resource_group_name
   location                          = var.location
@@ -115,3 +122,5 @@ resource "azurerm_postgresql_flexible_server" "postgresql_flexible_server_temp_r
   storage_mb                        = 65536
   tags                              = var.common_tags
 }
+
+
