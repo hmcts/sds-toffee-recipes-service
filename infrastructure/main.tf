@@ -112,5 +112,6 @@ resource "azurerm_postgresql_flexible_server" "postgresql_flexible_server_temp_r
   create_mode                       = "PointInTimeRestore"
   point_in_time_restore_time_in_utc = timeadd(timestamp(), "-24h")
   source_server_id                  = module.postgresql_flexible.instance_id
+  storage_mb                        = 65536
   tags                              = var.common_tags
 }
