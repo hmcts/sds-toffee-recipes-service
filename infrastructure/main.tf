@@ -124,4 +124,17 @@ resource "azurerm_postgresql_flexible_server" "postgresql_flexible_server_temp_r
   tags                              = var.common_tags
 }
 
+resource "azurerm_postgresql_flexible_server" "postgresql_flexible_server_restore" {
+  count = var.env == "stg" ? 1 : 0
 
+  name                              = "${var.product}-v14-flexible-restore-stg"
+  resource_group_name               = module.postgresql_flexible.resource_group_name
+  delegated_subnet_id               = "/subscriptions/74dacd4f-a248-45bb-a2f0-af700dc4cf68/resourceGroups/ss-stg-network-rg/providers/Microsoft.Network/virtualNetworks/ss-stg-vnet/subnets/postgresql"
+  location                          = var.location
+  sku_name                          = var.pgsql_sku
+  create_mode                       = "PointInTimeRestore"
+  point_in_time_restore_time_in_utc = timeadd(timestamp(), "-10m")
+  source_server_id                  = azurerm_postgresql_flexible_server.postgresql_flexible_server_temp_restore[0].id
+  storage_mb                        = 65536
+  tags                              = var.common_tags
+}
