@@ -117,6 +117,7 @@ resource "azurerm_postgresql_flexible_server" "postgresql_flexible_server_temp_r
   delegated_subnet_id               = "/subscriptions/74dacd4f-a248-45bb-a2f0-af700dc4cf68/resourceGroups/ss-stg-network-rg/providers/Microsoft.Network/virtualNetworks/ss-stg-vnet/subnets/postgresql"
   public_network_access_enabled     = false
   location                          = var.location
+  zone                              = 3
   sku_name                          = var.pgsql_sku
   create_mode                       = "PointInTimeRestore"
   point_in_time_restore_time_in_utc = timeadd(timestamp(), "-24h")
