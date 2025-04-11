@@ -101,3 +101,15 @@ module "postgresql_flexible" {
   pgsql_version = "15"
   pgsql_sku     = var.pgsql_sku
 }
+
+resource "azurerm_postgresql_flexible_server" "postgresql_flexible_server_temp_restore" {
+  count = var.env == "stg" ? 1 : 0
+
+  name                = "${var.product}-v14-flexible-restore-temp-stg"
+  resource_group_name = module.postgresql_flexible.resource_group_name
+  location            = var.location
+  sku_name            = var.pgsql_sku
+  create_mode         = "PointInTimeRestore"
+  source_server_id    = module.postgresql_flexible.instance_id
+  tags                = var.common_tags
+}
