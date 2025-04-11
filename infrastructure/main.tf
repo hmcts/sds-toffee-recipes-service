@@ -129,6 +129,13 @@ resource "azurerm_postgresql_flexible_server" "postgresql_flexible_server_temp_r
 resource "azurerm_postgresql_flexible_server" "postgresql_flexible_server_restore" {
   count = var.env == "stg" ? 1 : 0
 
+  lifecycle {
+    ignore_changes = [
+      # Ignore changes to the point_in_time_restore_time_in_utc attribute
+      point_in_time_restore_time_in_utc,
+    ]
+  }
+
   name                              = "${var.product}-v14-flexible-restore-stg"
   resource_group_name               = module.postgresql_flexible.resource_group_name
   public_network_access_enabled     = false
