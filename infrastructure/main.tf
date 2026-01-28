@@ -101,3 +101,9 @@ module "postgresql_flexible" {
   pgsql_version = "15"
   pgsql_sku     = var.pgsql_sku
 }
+
+resource "azurerm_key_vault_secret" "test_secret" {
+  name         = "test-secret"
+  value        = "toffee"
+  key_vault_id = data.azurerm_key_vault.key_vault.id
+}
