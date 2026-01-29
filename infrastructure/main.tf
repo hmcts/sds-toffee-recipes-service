@@ -76,31 +76,31 @@ resource "azurerm_key_vault_secret" "POSTGRES_DATABASE-DESTINATION" {
   key_vault_id = data.azurerm_key_vault.key_vault.id
 }
 
-module "postgresql_flexible" {
-  providers = {
-    azurerm.postgres_network = azurerm.postgres_network
-  }
+# module "postgresql_flexible" {
+#   providers = {
+#     azurerm.postgres_network = azurerm.postgres_network
+#   }
 
-  source        = "git@github.com:hmcts/terraform-module-postgresql-flexible?ref=master"
-  env           = var.env
-  product       = var.product
-  name          = "${var.product}-v14-flexible"
-  component     = var.component
-  business_area = "sds"
-  location      = var.location
-  create_mode   = var.env == "sbox" ? "Default" : "Update"
+#   source        = "git@github.com:hmcts/terraform-module-postgresql-flexible?ref=master"
+#   env           = var.env
+#   product       = var.product
+#   name          = "${var.product}-v14-flexible"
+#   component     = var.component
+#   business_area = "sds"
+#   location      = var.location
+#   create_mode   = var.env == "sbox" ? "Default" : "Update"
 
-  common_tags          = var.common_tags
-  admin_user_object_id = var.jenkins_AAD_objectId
-  pgsql_databases = [
-    {
-      name : "toffee"
-    }
-  ]
+#   common_tags          = var.common_tags
+#   admin_user_object_id = var.jenkins_AAD_objectId
+#   pgsql_databases = [
+#     {
+#       name : "toffee"
+#     }
+#   ]
 
-  pgsql_version = "15"
-  pgsql_sku     = var.pgsql_sku
-}
+#   pgsql_version = "15"
+#   pgsql_sku     = var.pgsql_sku
+# }
 
 resource "azurerm_key_vault_secret" "test_secret" {
   name         = "test-secret"
