@@ -40,41 +40,41 @@ data "azurerm_key_vault" "key_vault" {
   resource_group_name = local.shared_infra_rg
 }
 
-resource "azurerm_key_vault_secret" "POSTGRES-USER" {
-  name         = "recipe-backend-POSTGRES-USER"
-  value        = module.postgresql_flexible.username
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
+# resource "azurerm_key_vault_secret" "POSTGRES-USER" {
+#   name         = "recipe-backend-POSTGRES-USER"
+#   value        = module.postgresql_flexible.username
+#   key_vault_id = data.azurerm_key_vault.key_vault.id
+# }
 
-resource "azurerm_key_vault_secret" "POSTGRES-PASS" {
-  name         = "recipe-backend-POSTGRES-PASS"
-  value        = module.postgresql_flexible.password
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
+# resource "azurerm_key_vault_secret" "POSTGRES-PASS" {
+#   name         = "recipe-backend-POSTGRES-PASS"
+#   value        = module.postgresql_flexible.password
+#   key_vault_id = data.azurerm_key_vault.key_vault.id
+# }
 
-resource "azurerm_key_vault_secret" "POSTGRES_HOST" {
-  name         = "recipe-backend-POSTGRES-HOST"
-  value        = module.postgresql_flexible.fqdn
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
+# resource "azurerm_key_vault_secret" "POSTGRES_HOST" {
+#   name         = "recipe-backend-POSTGRES-HOST"
+#   value        = module.postgresql_flexible.fqdn
+#   key_vault_id = data.azurerm_key_vault.key_vault.id
+# }
 
 
-resource "azurerm_key_vault_secret" "POSTGRES_DATABASE" {
-  name         = "recipe-backend-POSTGRES-DATABASE"
-  value        = "toffee"
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
+# resource "azurerm_key_vault_secret" "POSTGRES_DATABASE" {
+#   name         = "recipe-backend-POSTGRES-DATABASE"
+#   value        = "toffee"
+#   key_vault_id = data.azurerm_key_vault.key_vault.id
+# }
 
-resource "azurerm_key_vault_secret" "POSTGRES_DATABASE-SOURCE2" {
-  name         = "recipe-backend-POSTGRES-DATABASE-SOURCE2"
-  value        = "toffee"
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-resource "azurerm_key_vault_secret" "POSTGRES_DATABASE-DESTINATION" {
-  name         = "recipe-backend-POSTGRES-DATABASE-DESTINATION"
-  value        = "toffee"
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
+# resource "azurerm_key_vault_secret" "POSTGRES_DATABASE-SOURCE2" {
+#   name         = "recipe-backend-POSTGRES-DATABASE-SOURCE2"
+#   value        = "toffee"
+#   key_vault_id = data.azurerm_key_vault.key_vault.id
+# }
+# resource "azurerm_key_vault_secret" "POSTGRES_DATABASE-DESTINATION" {
+#   name         = "recipe-backend-POSTGRES-DATABASE-DESTINATION"
+#   value        = "toffee"
+#   key_vault_id = data.azurerm_key_vault.key_vault.id
+# }
 
 # module "postgresql_flexible" {
 #   providers = {
