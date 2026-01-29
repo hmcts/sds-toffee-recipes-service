@@ -40,64 +40,70 @@ data "azurerm_key_vault" "key_vault" {
   resource_group_name = local.shared_infra_rg
 }
 
-resource "azurerm_key_vault_secret" "POSTGRES-USER" {
-  name         = "recipe-backend-POSTGRES-USER"
-  value        = module.postgresql_flexible.username
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
+# resource "azurerm_key_vault_secret" "POSTGRES-USER" {
+#   name         = "recipe-backend-POSTGRES-USER"
+#   value        = module.postgresql_flexible.username
+#   key_vault_id = data.azurerm_key_vault.key_vault.id
+# }
 
-resource "azurerm_key_vault_secret" "POSTGRES-PASS" {
-  name         = "recipe-backend-POSTGRES-PASS"
-  value        = module.postgresql_flexible.password
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
+# resource "azurerm_key_vault_secret" "POSTGRES-PASS" {
+#   name         = "recipe-backend-POSTGRES-PASS"
+#   value        = module.postgresql_flexible.password
+#   key_vault_id = data.azurerm_key_vault.key_vault.id
+# }
 
-resource "azurerm_key_vault_secret" "POSTGRES_HOST" {
-  name         = "recipe-backend-POSTGRES-HOST"
-  value        = module.postgresql_flexible.fqdn
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
+# resource "azurerm_key_vault_secret" "POSTGRES_HOST" {
+#   name         = "recipe-backend-POSTGRES-HOST"
+#   value        = module.postgresql_flexible.fqdn
+#   key_vault_id = data.azurerm_key_vault.key_vault.id
+# }
 
 
-resource "azurerm_key_vault_secret" "POSTGRES_DATABASE" {
-  name         = "recipe-backend-POSTGRES-DATABASE"
+# resource "azurerm_key_vault_secret" "POSTGRES_DATABASE" {
+#   name         = "recipe-backend-POSTGRES-DATABASE"
+#   value        = "toffee"
+#   key_vault_id = data.azurerm_key_vault.key_vault.id
+# }
+
+# resource "azurerm_key_vault_secret" "POSTGRES_DATABASE-SOURCE2" {
+#   name         = "recipe-backend-POSTGRES-DATABASE-SOURCE2"
+#   value        = "toffee"
+#   key_vault_id = data.azurerm_key_vault.key_vault.id
+# }
+# resource "azurerm_key_vault_secret" "POSTGRES_DATABASE-DESTINATION" {
+#   name         = "recipe-backend-POSTGRES-DATABASE-DESTINATION"
+#   value        = "toffee"
+#   key_vault_id = data.azurerm_key_vault.key_vault.id
+# }
+
+# module "postgresql_flexible" {
+#   providers = {
+#     azurerm.postgres_network = azurerm.postgres_network
+#   }
+
+#   source        = "git@github.com:hmcts/terraform-module-postgresql-flexible?ref=master"
+#   env           = var.env
+#   product       = var.product
+#   name          = "${var.product}-v14-flexible"
+#   component     = var.component
+#   business_area = "sds"
+#   location      = var.location
+#   create_mode   = var.env == "sbox" ? "Default" : "Update"
+
+#   common_tags          = var.common_tags
+#   admin_user_object_id = var.jenkins_AAD_objectId
+#   pgsql_databases = [
+#     {
+#       name : "toffee"
+#     }
+#   ]
+
+#   pgsql_version = "15"
+#   pgsql_sku     = var.pgsql_sku
+# }
+
+resource "azurerm_key_vault_secret" "test_secret" {
+  name         = "test-secret"
   value        = "toffee"
   key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-
-resource "azurerm_key_vault_secret" "POSTGRES_DATABASE-SOURCE2" {
-  name         = "recipe-backend-POSTGRES-DATABASE-SOURCE2"
-  value        = "toffee"
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-resource "azurerm_key_vault_secret" "POSTGRES_DATABASE-DESTINATION" {
-  name         = "recipe-backend-POSTGRES-DATABASE-DESTINATION"
-  value        = "toffee"
-  key_vault_id = data.azurerm_key_vault.key_vault.id
-}
-
-module "postgresql_flexible" {
-  providers = {
-    azurerm.postgres_network = azurerm.postgres_network
-  }
-
-  source        = "git@github.com:hmcts/terraform-module-postgresql-flexible?ref=master"
-  env           = var.env
-  product       = var.product
-  name          = "${var.product}-v14-flexible"
-  component     = var.component
-  business_area = "sds"
-  location      = var.location
-  create_mode   = var.env == "sbox" ? "Default" : "Update"
-
-  common_tags          = var.common_tags
-  admin_user_object_id = var.jenkins_AAD_objectId
-  pgsql_databases = [
-    {
-      name : "toffee"
-    }
-  ]
-
-  pgsql_version = "15"
-  pgsql_sku     = var.pgsql_sku
 }
