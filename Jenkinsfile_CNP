@@ -1,6 +1,6 @@
 #!groovy
 
-@Library("Infrastructure@DTSPO-29750/test-new-agent-template") _
+@Library("Infrastructure@DTSPO-29867/test-k8s-agent") _
 
 def type = "java"
 def product = "toffee"
