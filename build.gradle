@@ -27,11 +27,6 @@ plugins {
 group = 'uk.gov.hmcts.reform'
 version = '0.0.1'
 
-gatling {
-  // Ensure Gatling picks up the overridden Netty version
-  logLevel = 'WARN'
-}
-
 pmd {
   toolVersion = "6.55.0"
   reportsDir = file("$project.buildDir/reports/pmd")
