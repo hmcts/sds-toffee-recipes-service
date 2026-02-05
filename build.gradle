@@ -119,6 +119,21 @@ dependencyManagement {
         dependencySet(group: 'org.yaml', version: '2.4') {
             entry 'snakeyaml'
         }
+        
+        // Force Netty version compatible with Java 21 and Gatling
+        dependencySet(group: 'io.netty', version: '4.1.115.Final') {
+            entry 'netty-all'
+            entry 'netty-buffer'
+            entry 'netty-codec'
+            entry 'netty-codec-http'
+            entry 'netty-codec-http2'
+            entry 'netty-common'
+            entry 'netty-handler'
+            entry 'netty-resolver'
+            entry 'netty-transport'
+            entry 'netty-transport-native-epoll'
+            entry 'netty-transport-native-unix-common'
+        }
     }
 }
 
