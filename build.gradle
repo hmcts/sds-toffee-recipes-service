@@ -27,6 +27,11 @@ plugins {
 group = 'uk.gov.hmcts.reform'
 version = '0.0.1'
 
+gatling {
+  // Ensure Gatling picks up the overridden Netty version
+  logLevel = 'WARN'
+}
+
 pmd {
   toolVersion = "6.55.0"
   reportsDir = file("$project.buildDir/reports/pmd")
@@ -118,6 +123,22 @@ dependencyManagement {
         //CVE-2022-25857, CVE-2022-38749, CVE-2022-38750, CVE-2022-38751, CVE-2022-38752, CVE-2022-41854
         dependencySet(group: 'org.yaml', version: '2.4') {
             entry 'snakeyaml'
+        }
+        
+        // Force Netty version compatible with Java 21 and Gatling
+        dependencySet(group: 'io.netty', version: '4.1.115.Final') {
+            entry 'netty-all'
+            entry 'netty-handler'
+            entry 'netty-buffer'
+            entry 'netty-codec'
+            entry 'netty-codec-http'
+            entry 'netty-codec-http2'
+            entry 'netty-common'
+            entry 'netty-handler'
+            entry 'netty-resolver'
+            entry 'netty-transport'
+            entry 'netty-transport-native-epoll'
+            entry 'netty-transport-native-unix-common'
         }
     }
 }
