@@ -121,7 +121,7 @@ dependencyManagement {
         }
         
         // Force Netty version compatible with Java 21 and Gatling
-        dependencySet(group: 'io.netty', version: '4.1.115.Final') {
+        dependencySet(group: 'io.netty', version: '4.1.116.Final') {
             entry 'netty-all'
             entry 'netty-handler'
             entry 'netty-buffer'
