@@ -47,3 +47,10 @@ variable "common_tags" {
 variable "pgsql_sku" {
   default = "GP_Standard_D2s_v3"
 }
+
+variable "service_criticality" {
+  description = "Service criticality rating from 1-5."
+  type        = number
+  default     = 1
+}
+
