@@ -105,7 +105,7 @@ module "postgresql_flexible" {
 }
 
 module "app_service_plan" {
-  source = "git@github.com:hmcts/cnp-module-app-service-plan?ref=master"
+  source = "git@github.com:hmcts/cnp-module-app-service-plan?ref=DTSPO-30615-modernise-app-service-plan-module"
 
   asp_name            = var.product
   env                 = var.env
