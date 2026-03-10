@@ -105,13 +105,12 @@ module "postgresql_flexible" {
 }
 
 module "app_service_plan" {
-  source = "git@github.com:hmcts/cnp-module-app-service-plan?ref=DTSPO-30615-modernise-app-service-plan-module"
+  source = "git@github.com:hmcts/cnp-module-app-service-plan?ref=DTSPO-30614-modernise-app-service-plan-module"
 
   asp_name            = var.product
   env                 = var.env
   location            = var.location
   resource_group_name = local.shared_infra_rg
-  linux               = true
   asp_sku_size        = var.asp_sku_size
   asp_capacity        = var.asp_capacity
   common_tags         = var.common_tags
