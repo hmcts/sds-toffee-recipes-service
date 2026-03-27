@@ -2,7 +2,7 @@ java:
   applicationPort: 4550
   readinessPath: '/health/readiness'
   # Don't modify below here
-  image: 'sdshmctspublic.azurecr.io/toffee/recipe-backend:latest'
+  image: 'hmctsprod.azurecr.io/toffee/recipe-backend:latest'
   environment:
     POSTGRES_SSL_MODE: require
     APPLICATIONINSIGHTS_CONFIGURATION_FILE: /mnt/secrets/toffeesi/app-insights-config
