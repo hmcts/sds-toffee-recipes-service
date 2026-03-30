@@ -38,4 +38,8 @@ withPipeline(type, product, app) {
   env.NO_SKIP_IMG_BUILD = 'true'
   enablePerformanceTest()
   expires(expiresAfter)
+
+  afterAlways('test') {
+      steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/reports/problems/problems-report.html'
+  }
 }
