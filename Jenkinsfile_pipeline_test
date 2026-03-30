@@ -42,5 +42,6 @@ withPipeline(type, product, app) {
   afterAlways('test') {
       steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/reports/problems/problems-report.html'
       steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/reports/tests/**/*'
+      steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/reports/gatling/*'
   }
 }
