@@ -22,8 +22,8 @@ withNightlyPipeline(type, product, component) {
   env.SecurityRules = params.SecurityRules
 
   afterAlways('test') {
-      steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/reports/problems/problems-report.html'
-      steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/reports/tests/**/*'
-      steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/reports/gatling/*'
+      // steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/reports/problems/problems-report.html'
+      // steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/reports/tests/**/*'
+      // steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/reports/gatling/*'
   }
 }
