@@ -47,6 +47,8 @@ checkstyle {
 
 ext {
   lombokVersion = '1.18.38'
+  // Force this version to fix issue: https://github.com/testcontainers/testcontainers-java/issues/11212
+  testcontainersVersion = '1.21.4'
 }
 
 testing {
@@ -113,6 +115,10 @@ repositories {
 }
 
 dependencyManagement {
+  imports {
+    mavenBom "org.testcontainers:testcontainers-bom:${testcontainersVersion}"
+  }
+
     dependencies {
 
         //CVE-2022-25857, CVE-2022-38749, CVE-2022-38750, CVE-2022-38751, CVE-2022-38752, CVE-2022-41854
@@ -192,8 +198,8 @@ dependencies {
     exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
   }
   testImplementation group: 'com.typesafe', name: 'config', version: '1.4.4'
-  testImplementation "org.testcontainers:junit-jupiter:1.21.4"
-  testImplementation "org.testcontainers:postgresql:1.21.4"
+  testImplementation "org.testcontainers:junit-jupiter:${testcontainersVersion}"
+  testImplementation "org.testcontainers:postgresql:${testcontainersVersion}"
 }
 
 application {
