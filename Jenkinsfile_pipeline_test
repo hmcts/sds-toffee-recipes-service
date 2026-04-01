@@ -36,12 +36,12 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
 withPipeline(type, product, app) {
   // never skip stages when testing the pipeline
   env.NO_SKIP_IMG_BUILD = 'true'
-  enablePerformanceTest()
+  // enablePerformanceTest()
   expires(expiresAfter)
 
-  afterAlways('test') {
-      steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/reports/problems/problems-report.html'
-      steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/reports/tests/**/*'
-      steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/reports/gatling/*'
-  }
+  // afterAlways('test') {
+  //     steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/reports/problems/problems-report.html'
+  //     steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/reports/tests/**/*'
+  //     steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/reports/gatling/*'
+  // }
 }
