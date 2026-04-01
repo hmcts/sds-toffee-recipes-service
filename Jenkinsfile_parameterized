@@ -31,4 +31,10 @@ env.KEEP_DIR_FOR_DEBUGGING = 'true'
 
 withParameterizedPipeline(params.TYPE, params.PRODUCT_NAME, params.APP, 'sbox', 'sbox') {
   expires(expiresAfter)
+
+  afterAlways('test') {
+      // steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/reports/problems/problems-report.html'
+      // steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/reports/tests/**/*'
+      // steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/reports/gatling/*'
+  }
 }
