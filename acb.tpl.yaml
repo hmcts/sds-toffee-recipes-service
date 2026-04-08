@@ -47,6 +47,8 @@ steps:
 
   - id: manifest-push
     cmd: docker manifest push --purge {{.Run.Registry}}/{{CI_IMAGE_TAG}}
+    retries: 10
+    retryDelay: 5
     when:
       - manifest-create
     keep: true
