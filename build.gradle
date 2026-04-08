@@ -114,11 +114,15 @@ repositories {
 
 dependencyManagement {
     dependencies {
-
-        //CVE-2022-25857, CVE-2022-38749, CVE-2022-38750, CVE-2022-38751, CVE-2022-38752, CVE-2022-41854
-        dependencySet(group: 'org.yaml', version: '2.4') {
-            entry 'snakeyaml'
-        }
+      dependencySet(group: 'org.testcontainers', version: '1.21.4') {
+        entry 'testcontainers'
+        entry 'junit-jupiter'
+        entry 'postgresql'
+      }
+      //CVE-2022-25857, CVE-2022-38749, CVE-2022-38750, CVE-2022-38751, CVE-2022-38752, CVE-2022-41854
+      dependencySet(group: 'org.yaml', version: '2.4') {
+        entry 'snakeyaml'
+      }
     }
 }
 
@@ -192,8 +196,8 @@ dependencies {
     exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
   }
   testImplementation group: 'com.typesafe', name: 'config', version: '1.4.4'
-  testImplementation "org.testcontainers:junit-jupiter:1.20.6"
-  testImplementation "org.testcontainers:postgresql:1.20.6"
+  testImplementation "org.testcontainers:junit-jupiter:1.21.4"
+  testImplementation "org.testcontainers:postgresql:1.21.4"
 }
 
 application {

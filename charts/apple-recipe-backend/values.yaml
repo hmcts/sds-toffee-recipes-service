@@ -1,6 +1,6 @@
 java:
   applicationPort: 4550
-  image: 'hmctssandbox.azurecr.io/hmcts/apple-recipe-backend:latest'
+  image: 'hmctssbox.azurecr.io/hmcts/apple-recipe-backend:latest'
   environment:
     POSTGRES_SSL_MODE: require
     APPLICATIONINSIGHTS_CONFIGURATION_FILE: /mnt/secrets/applesi/app-insights-config
