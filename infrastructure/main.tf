@@ -101,6 +101,8 @@ module "postgresql_flexible" {
   pgsql_version = "15"
   pgsql_sku     = var.pgsql_sku
 
+  # Add service criticality param
+  service_criticality = var.service_criticality
 }
 
 module "app_service_plan" {

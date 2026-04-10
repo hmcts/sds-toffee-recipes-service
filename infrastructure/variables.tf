@@ -48,6 +48,13 @@ variable "pgsql_sku" {
   default = "GP_Standard_D2s_v3"
 }
 
+### add service_criticality variable declaration
+variable "service_criticality" {
+  description = "Service criticality rating from 1-5."
+  type        = number
+  default     = 1
+}
+
 variable "asp_sku_size" {
   type        = string
   description = "SKU size for the App Service Plan (e.g. B1, P1v3)."
