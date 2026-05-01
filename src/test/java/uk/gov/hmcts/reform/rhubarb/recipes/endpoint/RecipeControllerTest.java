@@ -2,24 +2,15 @@ package uk.gov.hmcts.reform.rhubarb.recipes.endpoint;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.util.TestPropertyValues;
-import org.springframework.context.ApplicationContextInitializer;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
-import org.testcontainers.containers.PostgreSQLContainer;
-import org.testcontainers.ext.ScriptUtils;
-import org.testcontainers.jdbc.JdbcDatabaseDelegate;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
 import uk.gov.hmcts.reform.rhubarb.recipes.domain.Recipe;
 import uk.gov.hmcts.reform.rhubarb.recipes.domain.RecipeList;
 
@@ -28,18 +19,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@Testcontainers
 @SpringBootTest(properties = { "spring.flyway.enabled=true" })
 @AutoConfigureMockMvc
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(initializers = {RecipeControllerTest.Initializer.class})
+@Sql(scripts = "/init.sql")
 class RecipeControllerTest {
-
-    @Container
-    public static final PostgreSQLContainer POSTGRES_CONTAINER = new PostgreSQLContainer("postgres:11-bullseye")
-        .withDatabaseName("toffee")
-        .withUsername("toffee")
-        .withPassword("toffee");
 
     @Autowired
     @SuppressWarnings("PMD.BeanMembersShouldSerialize")
@@ -48,30 +32,6 @@ class RecipeControllerTest {
     @Autowired
     @SuppressWarnings("PMD.BeanMembersShouldSerialize")
     private ObjectMapper objectMapper;
-
-    private static boolean initComplete;
-
-    static class Initializer
-        implements ApplicationContextInitializer<ConfigurableApplicationContext> {
-        @Override
-        public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
-            TestPropertyValues.of(
-                "spring.datasource.url=" + POSTGRES_CONTAINER.getJdbcUrl(),
-                "spring.datasource.username=" + POSTGRES_CONTAINER.getUsername(),
-                "spring.datasource.password=" + POSTGRES_CONTAINER.getPassword()
-            ).applyTo(configurableApplicationContext.getEnvironment());
-        }
-    }
-
-    @BeforeEach
-    void before() {
-        if (!initComplete) {
-            try (JdbcDatabaseDelegate jdbcDatabaseDelegate = new JdbcDatabaseDelegate(POSTGRES_CONTAINER, "")) {
-                ScriptUtils.runInitScript(jdbcDatabaseDelegate, "init.sql");
-                initComplete = true;
-            }
-        }
-    }
 
     @Test
     void retrieveAll() throws Exception {
