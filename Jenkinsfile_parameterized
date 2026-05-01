@@ -1,5 +1,5 @@
 #!groovy
-@Library(value="Infrastructure", changelog=false)
+@Library(value="Infrastructure@DTSPO-30107-jenkins-agents", changelog=false)
 
 List<LinkedHashMap<String, Object>> apiTestSecrets = [
   secret('test-client-key-store', 'TEST_CLIENT_KEY_STORE'),
@@ -21,6 +21,8 @@ properties([
     string(name: 'PRODUCT_NAME', defaultValue: 'toffee', description: ''),
     string(name: 'APP', defaultValue: 'recipe-backend', description: ''),
     string(name: 'TYPE', defaultValue: 'java', description: ''),
+    choice(name: 'ENVIRONMENT', choices: 'sbox\ndev\nstg\nithc\ntest\ndemo\nprod', description: 'Environment where code should be built and deployed'),
+    choice(name: 'SUBSCRIPTION', choices: 'sbox\ndev\nstg\nithc\ntest\ndemo\nprod', description: 'Azure subscription short name to build in'),
 
   ]),
   [$class: 'GithubProjectProperty', projectUrlStr: 'github.com/contino/moj-plum-recipes-service'],
@@ -29,6 +31,6 @@ properties([
 def expiresAfter = "3000-01-01"
 env.KEEP_DIR_FOR_DEBUGGING = 'true'
 
-withParameterizedPipeline(params.TYPE, params.PRODUCT_NAME, params.APP, 'sbox', 'sbox') {
+withParameterizedPipeline(params.TYPE, params.PRODUCT_NAME, params.APP, params.ENVIRONMENT, params.SUBSCRIPTION) {
   expires(expiresAfter)
 }
