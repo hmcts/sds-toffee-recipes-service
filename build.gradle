@@ -113,10 +113,10 @@ repositories {
 }
 
 dependencyManagement {
-    // // Ensure TestContainers versions 1.21.4 are used instead of 1.19.7 set by Spring Boot BOM
-    // imports {
-    //   mavenBom "org.testcontainers:testcontainers-bom:1.21.4"
-    // }
+    // Ensure TestContainers versions 1.21.4 are used instead of 1.19.7 set by Spring Boot
+    imports {
+      mavenBom "org.testcontainers:testcontainers-bom:1.21.4"
+    }
     dependencies {
 
         //CVE-2022-25857, CVE-2022-38749, CVE-2022-38750, CVE-2022-38751, CVE-2022-38752, CVE-2022-41854
@@ -198,9 +198,6 @@ dependencies {
   }
   testImplementation group: 'com.typesafe', name: 'config', version: '1.4.4'
 
-  /* Spring Boot's BOM normally overrides these versions back to 1.19.7 which fails to connect to Docker in the pipeline
-     so ensure that these do not get override by adding the 1.21.4 TestContainers BOM */
-  testImplementation platform("org.testcontainers:testcontainers-bom:1.21.4")
   testImplementation "org.testcontainers:junit-jupiter"
   testImplementation "org.testcontainers:postgresql"
 }
