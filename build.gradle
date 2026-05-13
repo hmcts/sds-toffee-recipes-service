@@ -162,6 +162,9 @@ dependencyUpdates {
 configurations.all {
   resolutionStrategy {
     eachDependency { DependencyResolveDetails details ->
+      if (details.requested.group == 'org.testcontainers') {
+        details.useVersion '1.21.4'
+      }
       if (details.requested.group == 'ch.qos.logback') {
         details.useVersion '1.4.14'
       }
