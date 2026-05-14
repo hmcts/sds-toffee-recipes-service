@@ -117,6 +117,7 @@ dependencyManagement {
     imports {
       mavenBom "org.testcontainers:testcontainers-bom:1.21.4"
     }
+
     dependencies {
 
         //CVE-2022-25857, CVE-2022-38749, CVE-2022-38750, CVE-2022-38751, CVE-2022-38752, CVE-2022-41854
@@ -166,9 +167,23 @@ dependencyUpdates {
 configurations.all {
   resolutionStrategy {
     eachDependency { DependencyResolveDetails details ->
-
       if (details.requested.group == 'ch.qos.logback') {
         details.useVersion '1.4.14'
+      }
+    }
+  }
+}
+
+/* Spring Boot and Gatling clash on the Netty dependency and the Gradle resolution picks the Spring Boot's 4.1.109.Final 
+   Gradle requires 4.2.1.Final for the tests to run, so we need to force it to use that version for the Gatling tests 
+   With the exception of netty-tcnative which does not have a 4.2.1.Final version
+   https://community.gatling.io/t/java-lang-noclassdeffounderror-io-netty-channel-iohandle/9672
+   */
+configurations.matching { it.name.toLowerCase().contains('gatling') }.all {
+  resolutionStrategy {
+    eachDependency { DependencyResolveDetails details ->
+      if (details.requested.group == 'io.netty' && !details.requested.name.startsWith('netty-tcnative')) {
+        details.useVersion '4.2.1.Final'
       }
     }
   }
