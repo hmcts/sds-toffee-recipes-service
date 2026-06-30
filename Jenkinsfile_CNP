@@ -1,6 +1,6 @@
 #!groovy
 
-@Library("Infrastructure") _
+@Library("Infrastructure@2.2.0") _
 
 def type = "java"
 def product = "toffee"
