@@ -102,14 +102,16 @@ module "postgresql_flexible" {
   pgsql_sku     = var.pgsql_sku
 }
 
-module "app_service_plan" {
-  source = "git@github.com:hmcts/cnp-module-app-service-plan?ref=master"
-
-  asp_name            = var.product
-  env                 = var.env
-  location            = var.location
-  resource_group_name = local.shared_infra_rg
-  asp_sku_size        = var.asp_sku_size
-  asp_capacity        = var.asp_capacity
-  common_tags         = var.common_tags
-}
+# DTSPO-32691: temporarily disabled to destroy the unused sandbox App Service Plan.
+# Re-enable (uncomment) to recreate it.
+# module "app_service_plan" {
+#   source = "git@github.com:hmcts/cnp-module-app-service-plan?ref=master"
+#
+#   asp_name            = var.product
+#   env                 = var.env
+#   location            = var.location
+#   resource_group_name = local.shared_infra_rg
+#   asp_sku_size        = var.asp_sku_size
+#   asp_capacity        = var.asp_capacity
+#   common_tags         = var.common_tags
+# }
