@@ -36,6 +36,7 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
 withPipeline(type, product, app) {
   // never skip stages when testing the pipeline
   env.NO_SKIP_IMG_BUILD = 'true'
-  enablePerformanceTest()
+  // Temporarily disabled while validating Infrastructure@2.4.3; Gatling archiver is failing after report generation.
+  // enablePerformanceTest()
   expires(expiresAfter)
 }
