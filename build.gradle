@@ -85,8 +85,6 @@ testing {
     }
 
     functional(JvmTestSuite) {
-      testType = TestSuiteType.FUNCTIONAL_TEST
-
       dependencies {
         implementation project()
       }
