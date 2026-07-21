@@ -17,7 +17,7 @@ plugins {
   id 'jacoco'
   id 'io.spring.dependency-management' version '1.1.7'
   id 'org.flywaydb.flyway' version '11.20.3'
-  id 'org.springframework.boot' version '3.2.5'
+  id 'org.springframework.boot' version '3.5.5'
   id 'org.owasp.dependencycheck' version '12.2.2'
   id 'com.github.ben-manes.versions' version '0.54.0'
   id 'org.sonarqube' version '6.3.1.5724'
@@ -29,13 +29,13 @@ version = '0.0.1'
 
 pmd {
   toolVersion = "6.55.0"
-  reportsDir = file("$project.buildDir/reports/pmd")
+  reportsDir = layout.buildDirectory.dir("reports/pmd").get().asFile
   ruleSetFiles = files("config/pmd/ruleset.xml")
 }
 
 java {
   toolchain {
-    languageVersion = JavaLanguageVersion.of(21)
+    languageVersion = JavaLanguageVersion.of(25)
   }
 }
 
@@ -148,7 +148,7 @@ sonarqube {
   properties {
     property "sonar.projectName", "sds-toffee-recipes-service"
     property "sonar.projectKey", "sds-toffee-recipes-service"
-    property "sonar.dependencyCheck.reportPath", "${project.buildDir}/reports/dependency-check-report.xml"
+    property "sonar.dependencyCheck.reportPath", "${layout.buildDirectory.get().asFile}/reports/dependency-check-report.xml"
     property "sonar.coverage.exclusions", "**/config/**, **Exception**"
   }
 }
@@ -161,16 +161,6 @@ dependencyUpdates {
   }
   rejectVersionIf { selection -> // <---- notice how the closure argument is named
     return isNonStable(selection.candidate.version) && !isNonStable(selection.currentVersion)
-  }
-}
-
-configurations.all {
-  resolutionStrategy {
-    eachDependency { DependencyResolveDetails details ->
-      if (details.requested.group == 'ch.qos.logback') {
-        details.useVersion '1.4.14'
-      }
-    }
   }
 }
 
@@ -202,7 +192,7 @@ dependencies {
   implementation group: 'com.google.guava', name: 'guava', version: '33.6.0-jre'
 
   implementation group: 'com.github.hmcts.java-logging', name: 'logging', version: '8.0.0'
-  implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.6.0'
+  implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.8.6'
 
   compileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVersion
   annotationProcessor group: 'org.projectlombok', name: 'lombok', version: lombokVersion
