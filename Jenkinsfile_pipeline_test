@@ -13,7 +13,7 @@
 
 properties([
   parameters([
-    string(name: 'LIB_VERSION', defaultValue: 'master', description: 'Branch name of pipeline library to use')
+    string(name: 'LIB_VERSION', defaultValue: 'DTSPO-32837-job-caching-spike', description: 'Branch name of pipeline library to use')
   ])
 ])
 
@@ -36,6 +36,7 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
 withPipeline(type, product, app) {
   // never skip stages when testing the pipeline
   env.NO_SKIP_IMG_BUILD = 'true'
+  enableBuildCache()
   enablePerformanceTest()
   expires(expiresAfter)
 }
