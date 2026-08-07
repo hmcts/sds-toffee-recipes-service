@@ -1,6 +1,6 @@
 #!groovy
 
-@Library("Infrastructure") _
+@Library("Infrastructure@dev/DTSPO-28281") _
 
 def type = "java"
 def product = "toffee"
@@ -18,6 +18,9 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
   ]
 }
 
+def envName = new uk.gov.hmcts.contino.Environment(env).nonProdName
+
 withPipeline(type, product, component) {
+  enableFortifyScan("${product}si-${envName}")
   expires(expiresAfter)
 }
