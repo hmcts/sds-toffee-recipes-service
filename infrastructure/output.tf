@@ -3,7 +3,8 @@ output "api_gateway_url" {
   value = "https://core-api-mgmt-${var.env}.azure-api.net/${local.api_base_path}"
 }
 
-output "app_service_plan_id" {
-  description = "Resource ID of the toffee App Service Plan."
-  value       = module.app_service_plan.asp_id
-}
+# DTSPO-32691: temporarily disabled with the App Service Plan module.
+# output "app_service_plan_id" {
+#   description = "Resource ID of the toffee App Service Plan."
+#   value       = module.app_service_plan.asp_id
+# }

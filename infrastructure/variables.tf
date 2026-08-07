@@ -48,14 +48,15 @@ variable "pgsql_sku" {
   default = "GP_Standard_D2s_v3"
 }
 
-variable "asp_sku_size" {
-  type        = string
-  description = "SKU size for the App Service Plan (e.g. B1, P1v3)."
-  default     = "B1"
-}
-
-variable "asp_capacity" {
-  description = "Number of workers for the App Service Plan."
-  type        = number
-  default     = 1
-}
+# DTSPO-32691: temporarily disabled with the App Service Plan module.
+# variable "asp_sku_size" {
+#   type        = string
+#   description = "SKU size for the App Service Plan (e.g. B1, P1v3)."
+#   default     = "B1"
+# }
+#
+# variable "asp_capacity" {
+#   description = "Number of workers for the App Service Plan."
+#   type        = number
+#   default     = 1
+# }
