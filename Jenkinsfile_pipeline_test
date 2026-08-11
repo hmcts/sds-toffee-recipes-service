@@ -36,7 +36,6 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
 withPipeline(type, product, app) {
   // never skip stages when testing the pipeline
   env.NO_SKIP_IMG_BUILD = 'true'
-  enableBuildCache()
   enablePerformanceTest()
   expires(expiresAfter)
 }
