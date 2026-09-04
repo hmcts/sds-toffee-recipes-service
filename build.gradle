@@ -28,7 +28,7 @@ group = 'uk.gov.hmcts.reform'
 version = '0.0.1'
 
 pmd {
-  toolVersion = "6.55.0"
+  toolVersion = "7.27.0"
   reportsDir = layout.buildDirectory.dir("reports/pmd").get().asFile
   ruleSetFiles = files("config/pmd/ruleset.xml")
 }
