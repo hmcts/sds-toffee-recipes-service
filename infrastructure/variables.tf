@@ -48,6 +48,57 @@ variable "pgsql_sku" {
   default = "GP_Standard_D2s_v3"
 }
 
+variable "postgres_major_upgrade_test_enabled" {
+  description = "Creates the isolated Plum PostgreSQL major-version upgrade test server."
+  type        = bool
+  default     = false
+}
+
+variable "postgres_major_upgrade_test_version" {
+  description = "PostgreSQL version for the upgrade test server. Set to 14 initially, then 17 for the upgrade test."
+  type        = string
+  default     = "14"
+
+  validation {
+    condition     = contains(["14", "15", "16", "17"], var.postgres_major_upgrade_test_version)
+    error_message = "The major-upgrade test version must be PostgreSQL 14, 15, 16, or 17."
+  }
+}
+
+variable "postgres_major_upgrade_test_subnet_suffix" {
+  description = "PostgreSQL delegated subnet suffix for the Plum test server."
+  type        = string
+  default     = "expanded"
+
+  validation {
+    condition     = contains(["expanded", "none"], var.postgres_major_upgrade_test_subnet_suffix)
+    error_message = "The PostgreSQL subnet suffix must be expanded or none."
+  }
+}
+
+variable "postgres_major_upgrade_test_restore_enabled" {
+  description = "Creates a separate point-in-time-restored server to prove recovery after the version upgrade."
+  type        = bool
+  default     = false
+}
+
+variable "postgres_major_upgrade_test_restore_version" {
+  description = "PostgreSQL version for the point-in-time restore server."
+  type        = string
+  default     = "14"
+
+  validation {
+    condition     = contains(["14", "15", "16", "17"], var.postgres_major_upgrade_test_restore_version)
+    error_message = "The restore test version must be PostgreSQL 14, 15, 16, or 17."
+  }
+}
+
+variable "postgres_major_upgrade_test_restore_time" {
+  description = "UTC timestamp before the major-version upgrade used for the point-in-time restore."
+  type        = string
+  default     = null
+}
+
 # DTSPO-32691: temporarily disabled with the App Service Plan module.
 # variable "asp_sku_size" {
 #   type        = string
