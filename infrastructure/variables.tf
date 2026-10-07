@@ -76,29 +76,6 @@ variable "postgres_major_upgrade_test_subnet_suffix" {
   }
 }
 
-variable "postgres_major_upgrade_test_restore_enabled" {
-  description = "Creates a separate point-in-time-restored server to prove recovery after the version upgrade."
-  type        = bool
-  default     = false
-}
-
-variable "postgres_major_upgrade_test_restore_version" {
-  description = "PostgreSQL version for the point-in-time restore server."
-  type        = string
-  default     = "14"
-
-  validation {
-    condition     = contains(["14", "15", "16", "17"], var.postgres_major_upgrade_test_restore_version)
-    error_message = "The restore test version must be PostgreSQL 14, 15, 16, or 17."
-  }
-}
-
-variable "postgres_major_upgrade_test_restore_time" {
-  description = "UTC timestamp before the major-version upgrade used for the point-in-time restore."
-  type        = string
-  default     = null
-}
-
 # DTSPO-32691: temporarily disabled with the App Service Plan module.
 # variable "asp_sku_size" {
 #   type        = string

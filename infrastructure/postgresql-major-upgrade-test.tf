@@ -22,45 +22,8 @@ module "postgres_major_upgrade_test" {
     }
   ]
 
-  pgsql_version         = var.postgres_major_upgrade_test_version
-  pgsql_sku             = var.pgsql_sku
-  backup_retention_days = 35
-  high_availability     = false
-  subnet_suffix         = var.postgres_major_upgrade_test_subnet_suffix
-  service_criticality   = 4
-}
-
-module "postgres_major_upgrade_test_restore" {
-  count = var.postgres_major_upgrade_test_restore_enabled ? 1 : 0
-
-  providers = {
-    azurerm.postgres_network = azurerm.postgres_network
-  }
-
-  source              = "git@github.com:hmcts/terraform-module-postgresql-flexible?ref=DTSPO-30107-additional-postgres-admins"
-  env                 = var.env
-  product             = var.product
-  name                = "toffee-pg-major-upgrade-restore"
-  component           = var.component
-  business_area       = "sds"
-  location            = var.location
-  resource_group_name = module.postgresql_flexible.resource_group_name
-  create_mode         = "PointInTimeRestore"
-  source_server_id    = module.postgres_major_upgrade_test[0].instance_id
-  restore_time        = var.postgres_major_upgrade_test_restore_time
-
-  common_tags          = var.common_tags
-  admin_user_object_id = var.jenkins_AAD_objectId
-  pgsql_databases = [
-    {
-      name = "upgrade_validation"
-    }
-  ]
-
-  pgsql_version         = var.postgres_major_upgrade_test_restore_version
-  pgsql_sku             = var.pgsql_sku
-  backup_retention_days = 35
-  high_availability     = false
-  subnet_suffix         = var.postgres_major_upgrade_test_subnet_suffix
-  service_criticality   = 4
+  pgsql_version     = var.postgres_major_upgrade_test_version
+  pgsql_sku         = var.pgsql_sku
+  high_availability = false
+  subnet_suffix     = var.postgres_major_upgrade_test_subnet_suffix
 }
