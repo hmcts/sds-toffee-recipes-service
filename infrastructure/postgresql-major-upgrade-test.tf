@@ -1,5 +1,5 @@
 module "postgres_major_upgrade_test" {
-  count = var.postgres_major_upgrade_test_enabled ? 1 : 0
+  count = var.env == "sbox" && var.postgres_major_upgrade_test_enabled ? 1 : 0
 
   providers = {
     azurerm.postgres_network = azurerm.postgres_network

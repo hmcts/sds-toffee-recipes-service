@@ -49,7 +49,7 @@ variable "pgsql_sku" {
 }
 
 variable "postgres_major_upgrade_test_enabled" {
-  description = "Creates the isolated Plum PostgreSQL major-version upgrade test server."
+  description = "Creates the isolated Sandbox PostgreSQL major-version upgrade test server."
   type        = bool
   default     = false
 }

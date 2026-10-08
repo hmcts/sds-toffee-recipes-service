@@ -4,7 +4,7 @@ output "api_gateway_url" {
 }
 
 output "postgres_major_upgrade_test" {
-  value = var.postgres_major_upgrade_test_enabled ? {
+  value = var.env == "sbox" && var.postgres_major_upgrade_test_enabled ? {
     instance_id = module.postgres_major_upgrade_test[0].instance_id
     fqdn        = module.postgres_major_upgrade_test[0].fqdn
   } : null
