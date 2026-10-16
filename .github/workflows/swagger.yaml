@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-java@v6
         with:
           distribution: 'temurin' # See 'Supported distributions' for available options
-          java-version: '21'
+          java-version: '25'
           cache: 'gradle'
       - name: Run Swagger Publisher
         run: ./gradlew test --tests uk.gov.hmcts.reform.rhubarb.recipes.SwaggerPublisher
