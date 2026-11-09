@@ -17,7 +17,7 @@ properties([
   ])
 ])
 
-library "Infrastructure@${params.LIB_VERSION}"
+library "Infrastructure@DTSPO-34796/improve-build-recovery"
 
 def type = "java"
 def product = "apple"
