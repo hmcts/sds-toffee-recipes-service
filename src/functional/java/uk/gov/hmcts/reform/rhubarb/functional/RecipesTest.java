@@ -16,7 +16,7 @@ class RecipesTest {
     public void before() {
         String appUrl = System.getenv("TEST_URL");
         if (appUrl == null) {
-            appUrl = "http://localhost:4550";
+            appUrl = "http://localhost:4551";
         }
 
         RestAssured.baseURI = appUrl;
