@@ -30,8 +30,8 @@ class RecipesTest {
     void recipes_list_returns_200() {
         get("/recipes").then().statusCode(200);
         
-    if (Boolean.parseBoolean(System.getenv("FAIL_FUNCTIONAL_TEST"))) {
-        fail("Intentional functional test failure for pipeline-test");
-    }
+        if (Boolean.parseBoolean(System.getenv("FAIL_FUNCTIONAL_TEST"))) {
+            fail("Intentional functional test failure for pipeline-test");
+        }
     }
 }
