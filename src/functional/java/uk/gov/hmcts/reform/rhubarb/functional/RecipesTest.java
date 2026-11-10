@@ -33,4 +33,5 @@ class RecipesTest {
     if (Boolean.parseBoolean(System.getenv("FAIL_FUNCTIONAL_TEST"))) {
         fail("Intentional functional test failure for pipeline-test");
     }
+    }
 }
