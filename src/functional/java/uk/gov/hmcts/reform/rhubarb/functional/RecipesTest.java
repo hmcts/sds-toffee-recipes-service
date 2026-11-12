@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import static io.restassured.RestAssured.get;
+import static org.junit.jupiter.api.Assertions.fail;
 
 class RecipesTest {
 
@@ -28,5 +29,9 @@ class RecipesTest {
     @SuppressWarnings("PMD.JUnitTestsShouldIncludeAssert")
     void recipes_list_returns_200() {
         get("/recipes").then().statusCode(200);
+        
+        if (Boolean.parseBoolean(System.getenv("FAIL_FUNCTIONAL_TEST"))) {
+            fail("Intentional functional test failure for pipeline-test");
+        }
     }
 }
