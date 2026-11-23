@@ -55,13 +55,13 @@ variable "postgres_major_upgrade_test_enabled" {
 }
 
 variable "postgres_major_upgrade_test_version" {
-  description = "PostgreSQL version for the upgrade test server. Set to 14 initially, then 17 for the upgrade test."
+  description = "PostgreSQL version for the upgrade test server. Set to 14 initially, then 18 for the upgrade test."
   type        = string
   default     = "14"
 
   validation {
-    condition     = contains(["14", "15", "16", "17"], var.postgres_major_upgrade_test_version)
-    error_message = "The major-upgrade test version must be PostgreSQL 14, 15, 16, or 17."
+    condition     = contains(["14", "17", "18"], var.postgres_major_upgrade_test_version)
+    error_message = "The major-upgrade test version must be PostgreSQL 14, 17, or 18."
   }
 }
 
