@@ -12,7 +12,7 @@ module "postgres_major_upgrade_test" {
   component           = var.component
   business_area       = "sds"
   location            = var.location
-  resource_group_name = module.postgresql_flexible.resource_group_name
+  resource_group_name = "apple-v14-flexible-data-sbox"
 
   common_tags          = var.common_tags
   admin_user_object_id = var.jenkins_AAD_objectId
