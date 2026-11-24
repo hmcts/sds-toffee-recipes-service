@@ -55,7 +55,7 @@ variable "postgres_major_upgrade_test_enabled" {
 }
 
 variable "postgres_major_upgrade_test_version" {
-  description = "PostgreSQL version for the upgrade test server. Set to 14 initially, then 18 for the upgrade test."
+  description = "PostgreSQL version for the upgrade test server. Set to 14 initially, then 17 for the upgrade test."
   type        = string
   default     = "14"
 
