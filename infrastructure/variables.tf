@@ -61,7 +61,7 @@ variable "postgres_major_upgrade_test_version" {
 
   validation {
     condition     = contains(["14", "17", "18"], var.postgres_major_upgrade_test_version)
-    error_message = "The major-upgrade test version must be PostgreSQL 14, 17, or 18."
+    error_message = "The major-upgrade test version must be PostgreSQL 14,new 17, or 18."
   }
 }
 
