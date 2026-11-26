@@ -4,4 +4,4 @@ postgres_major_upgrade_test_enabled     = true
 # DTSPO-32691: temporarily disabled with the App Service Plan module.
 # asp_sku_size                            = "B1"
 # asp_capacity                            = 1
-postgres_major_upgrade_test_version     = "18"
+postgres_major_upgrade_test_version = "18"
